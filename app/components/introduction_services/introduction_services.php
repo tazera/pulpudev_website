@@ -156,7 +156,8 @@
                 <div class="col-12 col-lg-6 d-flex">
                     <div class="card flex-row align-items-center top-card w-100">
                         <div class="flex-grow-1">
-                            <h3 class="top-card-title mb-3">Manage projects end-to-end</h3>
+                            <h3 id="manage-projects-end-to-end" class="top-card-title mb-3">Manage projects end-to-end
+                            </h3>
                             <p class="mb-0 top-card-text">Consolidate specs, milestones, tasks, and other documentation
                                 in one centralized location.</p>
                         </div>
