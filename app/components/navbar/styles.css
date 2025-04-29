@@ -10,6 +10,18 @@
   transition: color 0.3s ease;
 }
 
+.navbar {
+  background: transparent !important;
+  box-shadow: none !important;
+  /* Remove any Bootstrap background utility classes */
+}
+.bg-body-tertiary,
+.navbar.bg-body-tertiary {
+  background-color: transparent !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
 /* Hover: change text color */
 .nav-link.menu-link:hover {
   color: #ff8800 !important; /* Change text color to orange on hover */
@@ -148,6 +160,9 @@
   visibility: hidden; /* Prevent interaction when hidden */
   transform: translateY(-15px); /* Start slightly above */
   transition: opacity 0.8s ease, transform 0.8s ease; /* Slower animation */
+  border-radius: 1rem !important;
+  overflow: hidden;
+  margin-top: 0.1rem !important; /* Add more spacing below the navbar */
 }
 
 .nav-item.dropdown:hover .dropdown-menu {

@@ -21,13 +21,14 @@
     padding: 0.6rem 1.5rem;
     border-radius: 0.5rem;
     box-shadow: 0 2px 16px 0 rgba(255, 136, 0, 0.15);
-    transition: background 0.2s, box-shadow 0.2s;
+    transition: background 0.3s cubic-bezier(.4, 0, .2, 1), box-shadow 0.3s cubic-bezier(.4, 0, .2, 1), transform 0.3s cubic-bezier(.4, 0, .2, 1);
 }
 
 .hero-button:hover {
     background: linear-gradient(90deg, #ff5722, #ff8800);
     color: #fff;
     box-shadow: 0 4px 24px 0 rgba(255, 136, 0, 0.25);
+    transform: scale(1.1);
 }
 </style>
 <section class="d-flex align-items-center justify-content-center text-center"
@@ -40,6 +41,6 @@
             Streamline issues, sprints, and product roadmaps with a fast, modern interface.<br>
             Built for teams who care about speed and quality.
         </p>
-        <a href="#" class="btn hero-button">Get Started</a>
+        <a href="#" class="btn rounded-pill hero-button">Get Started</a>
     </div>
 </section>
