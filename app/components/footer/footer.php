@@ -1,5 +1,4 @@
 <div class="container">
-    <div style="height:2px;width:100%;background:#fff;"></div>
     <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-4 py-5 my-5 border-top">
         <!-- Logo Column -->
         <div class="col mb-3 ps-3 ps-sm-4">

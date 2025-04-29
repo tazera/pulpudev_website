@@ -21,14 +21,15 @@ init(basename($_SERVER['PHP_SELF']), $default_theme);
 
 <body class='bg-black'>
     <?php require_once("{$_SERVER['DOCUMENT_ROOT']}/components/background_animation/animation.php"); ?>
-    <div class="content">
+    <?php require_once("{$_SERVER['DOCUMENT_ROOT']}/pages/global_modules/m_navbar.php"); ?>
+    <div class="content" style="padding-top:70px;">
         <?php
-		require_once("{$_SERVER['DOCUMENT_ROOT']}/pages/global_modules/m_navbar.php");
-		?>
-        <?php
-		require_once("{$_SERVER['DOCUMENT_ROOT']}/pages/global_modules/m_footer.php");
-		?>
+        require_once("{$_SERVER['DOCUMENT_ROOT']}/components/introduction/introduction.php");
+        ?>
     </div>
+    <?php
+    require_once("{$_SERVER['DOCUMENT_ROOT']}/pages/global_modules/m_footer.php");
+    ?>
 </body>
 
 </html>
