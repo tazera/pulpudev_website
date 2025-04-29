@@ -1,0 +1,159 @@
+/* Combined selector ensures that .menu-link only applies
+   when the element also has .nav-link */
+.nav-link.menu-link {
+  position: relative;
+  /* so the pseudo-element aligns properly */
+  /* If you want a specific base color: */
+  color: white !important; /* Ensure all menu links, including "Services," are white */
+  text-decoration: none;
+  /* remove underlines, if any */
+  transition: color 0.3s ease;
+}
+
+/* Hover: change text color */
+.nav-link.menu-link:hover {
+  color: #ff8800 !important; /* Change text color to orange on hover */
+}
+
+/* Create the "underline" effect using a pseudo-element */
+.nav-link.menu-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #ff8800, #ff5722);
+  transition: width 0.3s ease, transform 0.3s ease;
+  transform: translateX(-50%);
+  /* centers the line under the text */
+}
+
+/* On hover, the underline expands to 100% width */
+.nav-link.menu-link:hover::after {
+  width: 100%;
+}
+
+.nav-orange-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 5px 15px rgba(255, 136, 0, 0.5);
+  color: white;
+  /* Ensures text remains white on hover */
+}
+
+.nav-orange-button {
+  background: linear-gradient(90deg, #ff8800, #d33d10);
+  border: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Remove the default blue focus/active background and outline */
+.nav-link.menu-link:focus,
+.nav-link.menu-link:active,
+.nav-link.menu-link.show {
+  background-color: transparent !important;
+  color: #ff8800 !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/*from here below is a css fix for the arrow down and hover effect*/
+.nav-link.dropdown-toggle::after {
+  content: "";
+  vertical-align: middle;
+  margin-left: 0.5em;
+  border-top: 0.3em solid white; /* Set arrow color to white */
+  border-right: 0.3em solid transparent;
+  border-bottom: 0;
+  border-left: 0.3em solid transparent;
+  display: inline-block;
+  position: static;
+  transform: rotate(0deg); /* Default arrow pointing down */
+  transition: transform 0.3s ease; /* Smooth rotation */
+}
+
+.nav-item.dropdown:hover .nav-link.dropdown-toggle::after {
+  transform: rotate(180deg); /* Rotate arrow to point up on hover */
+}
+
+.nav-link.dropdown-toggle.menu-link::after {
+  border-top: 0.3em solid;
+  border-right: 0.3em solid transparent;
+  border-left: 0.3em solid transparent;
+  background: none;
+  height: auto;
+  width: 0;
+  transform: none;
+}
+
+/* Create a separate pseudo-element for the underline effect in dropdown items */
+.nav-link.dropdown-toggle.menu-link::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #ff8800, #ff5722);
+  transition: width 0.3s ease, transform 0.3s ease;
+  transform: translateX(-50%);
+}
+
+/* On hover, the underline expands to 100% width */
+.nav-link.dropdown-toggle.menu-link:hover::before {
+  width: 100%;
+}
+
+/* Prevent double arrow in language dropdown */
+.nav-item.dropdown .dropdown-toggle img+ ::after {
+  margin-left: 0.3em;
+}
+
+/* Fix spacing between menu items */
+.nav-item {
+  position: relative;
+  margin-right: 10px;
+}
+
+@media (max-width: 768px) {
+  .navbar-collapse {
+    max-height: 80vh; /* Adjusted to show at least 4 menu items */
+    overflow-y: auto; /* Added scroll for overflow */
+  }
+
+  .nav-item.theme-button {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto; /* Center the theme button horizontally */
+    width: 100%; /* Ensure it spans the full width */
+  }
+}
+
+/* Ensure all nav-links are white in dark mode */
+.navbar-dark .nav-link {
+  color: #ffffff !important;
+}
+
+.navbar {
+  background-color: #000000 !important; /* Set navigation background to black */
+}
+
+.nav-item.dropdown .dropdown-menu {
+  max-width: none; /* Allow the dropdown to expand as needed */
+  min-width: 200px; /* Set a minimum width to fit the text */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  right: 0; /* Align dropdown to the right edge of the parent */
+  left: auto; /* Prevent it from overflowing to the left */
+  opacity: 0; /* Start hidden */
+  visibility: hidden; /* Prevent interaction when hidden */
+  transform: translateY(-15px); /* Start slightly above */
+  transition: opacity 0.8s ease, transform 0.8s ease; /* Slower animation */
+}
+
+.nav-item.dropdown:hover .dropdown-menu {
+  display: block; /* Show the dropdown menu on hover */
+  opacity: 1; /* Fully visible */
+  visibility: visible; /* Allow interaction */
+  transform: translateY(0); /* Reset position */
+}
+
