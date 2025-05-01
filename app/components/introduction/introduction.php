@@ -1,35 +1,35 @@
 <style>
-    .hero-gradient {
-        background: linear-gradient(90deg, #ff8800 0%, #ff5722 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
+.hero-gradient {
+    background: linear-gradient(90deg, #ff8800 0%, #ff5722 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
 
-    .hero-subtitle {
-        font-size: 1.4rem;
-        color: #b0b0b0;
-        margin-bottom: 2.5rem;
-        font-weight: 400;
-    }
+.hero-subtitle {
+    font-size: 1.4rem;
+    color: #b0b0b0;
+    margin-bottom: 2.5rem;
+    font-weight: 400;
+}
 
-    .hero-button {
-        background: linear-gradient(90deg, #ff8800, #ff5722);
-        color: #fff;
-        border: none;
-        font-weight: 600;
-        padding: 0.6rem 1.5rem;
-        border-radius: 0.5rem;
-        box-shadow: 0 2px 16px 0 rgba(255, 136, 0, 0.15);
-        transition: background 0.3s cubic-bezier(.4, 0, .2, 1), box-shadow 0.3s cubic-bezier(.4, 0, .2, 1), transform 0.3s cubic-bezier(.4, 0, .2, 1);
-    }
+.hero-button {
+    background: linear-gradient(90deg, #ff8800, #ff5722);
+    color: #fff;
+    border: none;
+    font-weight: 600;
+    padding: 0.6rem 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 16px 0 rgba(255, 136, 0, 0.15);
+    transition: background 0.3s cubic-bezier(.4, 0, .2, 1), box-shadow 0.3s cubic-bezier(.4, 0, .2, 1), transform 0.3s cubic-bezier(.4, 0, .2, 1);
+}
 
-    .hero-button:hover {
-        background: linear-gradient(90deg, #ff5722, #ff8800);
-        color: #fff;
-        box-shadow: 0 4px 24px 0 rgba(255, 136, 0, 0.25);
-        transform: scale(1.1);
-    }
+.hero-button:hover {
+    background: linear-gradient(90deg, #ff5722, #ff8800);
+    color: #fff;
+    box-shadow: 0 4px 24px 0 rgba(255, 136, 0, 0.25);
+    transform: scale(1.1);
+}
 </style>
 <section class="d-flex align-items-center justify-content-center text-center"
     style="min-height:45vh; background:transparent;">
@@ -41,6 +41,7 @@
             Streamline issues, sprints, and product roadmaps with a fast, modern interface.<br>
             Built for teams who care about speed and quality.
         </p>
-        <a href="/app/components/introduction_services/introduction_services.php#manage-projects-end-to-end" class="btn rounded-pill hero-button">Get Started</a>
+        <a href="/app/components/introduction_services/introduction_services.php#manage-projects-end-to-end"
+            class="btn rounded-pill hero-button">Get Started</a>
     </div>
 </section>
