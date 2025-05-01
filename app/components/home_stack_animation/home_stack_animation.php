@@ -31,14 +31,14 @@
      z: depth (positive = towards viewer)
      ========================== */
         --top-offset-x: 270px;
-        --top-offset-y: -25px;
+        --top-offset-y: 10px;
         --top-offset-z: 250px;
         /* pushed further out for larger cards */
-        --mid-offset-x: 80px;
+        --mid-offset-x: 0px;
         /* widened spacing */
-        --mid-offset-y: 5px;
+        --mid-offset-y: 10px;
         --mid-offset-z: 150px;
-        --bot-offset-x: -80px;
+        --bot-offset-x: -250px;
         --bot-offset-y: 30px;
         --bot-offset-z: 100px;
 
@@ -64,8 +64,8 @@
      ========================== */
         --scale-top: 1.3;
         /* increased final scale */
-        --scale-mid: 1.15;
-        --scale-bot: 1.1;
+        --scale-mid: 1.3;
+        --scale-bot: 1.3;
     }
 
     .stack-hero {
@@ -189,9 +189,9 @@
     <section class="stack-hero" id="stackHero">
         <div class="stack-wrapper">
             <!-- replace these with your real images -->
-            <img src="/images/home/image1.png" class="stack-img img-top" alt="Top">
+            <img src="/images/home/image3.webp" class="stack-img img-top" alt="Top">
             <img src="/images/home/image2.png" class="stack-img img-mid" alt="Middle">
-            <img src="/images/home/image3.webp" class="stack-img img-bottom" alt="Bottom">
+            <img src="/images/home/image1.png" class="stack-img img-bottom" alt="Bottom">
         </div>
     </section>
 
