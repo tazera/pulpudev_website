@@ -5,20 +5,19 @@
     <meta charset="UTF-8">
     <title>3D Stack Test</title>
     <style>
-    /* Updated 3D Stack Animation Styles v5 with detailed comments for rotation axes */
+    /* Updated 3D Stack Animation Styles v6: Desktop-Optimized Sizes */
     :root {
         /* ==========================
      Tunable parameters
      ========================== */
         /* Card dimensions and perspective */
-        --card-min-width: 380px;
-        /* Minimum width of the card container */
-        --card-max-width: 520px;
-        /* Maximum width of the card container */
+        --card-min-width: 480px;
+        /* Increased for larger desktop minimum */
+        --card-max-width: 800px;
+        /* Increased for larger desktop maximum */
         --card-aspect-ratio: 16/9;
-        /* Width-to-height ratio for cards */
-        --perspective-strength: 1600px;
-        /* Camera distance: higher = subtler depth */
+        --perspective-strength: 1800px;
+        /* Slightly farther camera for bigger cards */
 
         /* Animation timing */
         --pop-duration: 0.8s;
@@ -31,15 +30,17 @@
      y: vertical movement (positive = down)
      z: depth (positive = towards viewer)
      ========================== */
-        --top-offset-x: 200px;
+        --top-offset-x: 270px;
         --top-offset-y: -25px;
-        --top-offset-z: 200px;
-        --mid-offset-x: 60px;
+        --top-offset-z: 250px;
+        /* pushed further out for larger cards */
+        --mid-offset-x: 80px;
+        /* widened spacing */
         --mid-offset-y: 5px;
-        --mid-offset-z: 120px;
-        --bot-offset-x: -70px;
+        --mid-offset-z: 150px;
+        --bot-offset-x: -80px;
         --bot-offset-y: 30px;
-        --bot-offset-z: 80px;
+        --bot-offset-z: 100px;
 
         /* ==========================
      Rotation angles (FINAL)
@@ -61,9 +62,10 @@
      Scale factors (FINAL)
      scale >1 = larger, <1 = smaller
      ========================== */
-        --scale-top: 1.25;
-        --scale-mid: 1.1;
-        --scale-bot: 1;
+        --scale-top: 1.3;
+        /* increased final scale */
+        --scale-mid: 1.15;
+        --scale-bot: 1.1;
     }
 
     .stack-hero {
@@ -95,7 +97,6 @@
         opacity: 0;
         will-change: transform, opacity;
         animation-fill-mode: forwards;
-        /* Center pivot for rotations */
         transform-origin: center center;
     }
 
@@ -114,12 +115,10 @@
         animation: popBot var(--pop-duration) var(--pop-ease) 0.4s both;
     }
 
-    /* Keyframes: initial (0%) uses exaggerated offsets & rotations; 100% uses tuned variables */
     @keyframes popTop {
         0% {
             opacity: 0;
-            /* Start further down, deeper, and more tilted */
-            transform: translate3d(0, calc(var(--top-offset-y) + 225px), calc(var(--top-offset-z) - 50px)) rotateX(calc(var(--rotateX-top) + 3deg)) rotateY(calc(var(--rotateY-top) + 2deg)) scale(0.8);
+            transform: translate3d(0, calc(var(--top-offset-y) + 225px), calc(var(--top-offset-z) - 80px)) rotateX(calc(var(--rotateX-top) + 3deg)) rotateY(calc(var(--rotateY-top) + 2deg)) scale(0.8);
         }
 
         60% {
@@ -127,7 +126,6 @@
         }
 
         100% {
-            /* Final position/rotation/scale uses variables */
             opacity: 1;
             transform: translate3d(var(--top-offset-x), var(--top-offset-y), var(--top-offset-z)) rotateX(var(--rotateX-top)) rotateY(var(--rotateY-top)) scale(var(--scale-top));
         }
@@ -136,7 +134,7 @@
     @keyframes popMid {
         0% {
             opacity: 0;
-            transform: translate3d(0, calc(var(--mid-offset-y) + 235px), calc(var(--mid-offset-z) - 60px)) rotateX(calc(var(--rotateX-mid) + 4deg)) rotateY(calc(var(--rotateY-mid) + 2deg)) scale(0.9);
+            transform: translate3d(0, calc(var(--mid-offset-y) + 235px), calc(var(--mid-offset-z) - 80px)) rotateX(calc(var(--rotateX-mid) + 4deg)) rotateY(calc(var(--rotateY-mid) + 2deg)) scale(0.9);
         }
 
         60% {
@@ -152,7 +150,7 @@
     @keyframes popBot {
         0% {
             opacity: 0;
-            transform: translate3d(0, calc(var(--bot-offset-y) + 255px), calc(var(--bot-offset-z) - 70px)) rotateX(calc(var(--rotateX-bot) + 4deg)) rotateY(calc(var(--rotateY-bot) + 2deg)) scale(0.95);
+            transform: translate3d(0, calc(var(--bot-offset-y) + 255px), calc(var(--bot-offset-z) - 90px)) rotateX(calc(var(--rotateX-bot) + 4deg)) rotateY(calc(var(--rotateY-bot) + 2deg)) scale(0.95);
         }
 
         60% {
@@ -165,20 +163,17 @@
         }
     }
 
-    /* Responsive adjustments for small viewports */
     @media (max-width: 480px) {
         :root {
             --card-min-width: 260px;
             --card-max-width: 360px;
             --perspective-strength: 1000px;
-            /* Reduce spacing & depth */
             --top-offset-x: 100px;
             --top-offset-z: 120px;
             --mid-offset-x: 30px;
             --mid-offset-z: 80px;
             --bot-offset-x: -30px;
             --bot-offset-z: 40px;
-            /* Adjust scales for smaller screens */
             --scale-top: 1.1;
             --scale-mid: 1;
             --scale-bot: 0.95;
