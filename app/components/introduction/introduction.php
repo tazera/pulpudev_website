@@ -13,22 +13,21 @@
     font-weight: 400;
 }
 
-.hero-button {
-    background: linear-gradient(90deg, #ff8800, #ff5722);
-    color: #fff;
-    border: none;
-    font-weight: 600;
-    padding: 0.6rem 1.5rem;
-    border-radius: 0.5rem;
-    box-shadow: 0 2px 16px 0 rgba(255, 136, 0, 0.15);
-    transition: background 0.3s cubic-bezier(.4, 0, .2, 1), box-shadow 0.3s cubic-bezier(.4, 0, .2, 1), transform 0.3s cubic-bezier(.4, 0, .2, 1);
+.animated-btn {
+    transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1) !important;
 }
 
-.hero-button:hover {
-    background: linear-gradient(90deg, #ff5722, #ff8800);
-    color: #fff;
-    box-shadow: 0 4px 24px 0 rgba(255, 136, 0, 0.25);
+.animated-btn:hover {
     transform: scale(1.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.custom-btn {
+    background: linear-gradient(90deg, #ff8800, #d33d10);
+    border: none;
+    border-radius: 50px;
+    color: #fff;
+    padding: 12px 30px;
 }
 </style>
 <section class="d-flex align-items-center justify-content-center text-center"
@@ -42,6 +41,6 @@
             Built for teams who care about speed and quality.
         </p>
         <a href="/app/components/introduction_services/introduction_services.php#manage-projects-end-to-end"
-            class="btn rounded-pill hero-button">Get Started</a>
+            class="btn btn-lg rounded-pill animated-btn custom-btn">Get Started</a>
     </div>
 </section>
