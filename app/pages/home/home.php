@@ -14,9 +14,7 @@ init(basename($_SERVER['PHP_SELF']), $default_theme);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php echo "$business_name"; ?></title>
     <link rel="icon" type="image/webp" href="/images/logo.png">
-    <link rel="stylesheet" href="/pages/styles/global_styles.css">
     <?php require_once("{$_SERVER['DOCUMENT_ROOT']}/bootstrap/bootstrap_head.php"); ?>
-    <?php require_once("{$_SERVER['DOCUMENT_ROOT']}/bootstrap/bootstrap_body.php"); ?>
 </head>
 
 <body class='bg-black'>
@@ -36,6 +34,9 @@ init(basename($_SERVER['PHP_SELF']), $default_theme);
     require_once("{$_SERVER['DOCUMENT_ROOT']}/components/introduction_services/introduction_services.php");
     require_once("{$_SERVER['DOCUMENT_ROOT']}/pages/global_modules/m_footer.php");
     ?>
+
+    <?php require_once("{$_SERVER['DOCUMENT_ROOT']}/bootstrap/bootstrap_body.php"); ?>
+
 </body>
 
 </html>

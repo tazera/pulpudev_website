@@ -1,19 +1,19 @@
 <link rel="stylesheet" href="/components/navbar/styles.css">
 <nav class='navbar fixed-top navbar-expand-lg <?php echo $_SESSION['theme'] == "dark" ? "navbar-dark" : "navbar-light"; ?> bg-body-tertiary w-100 px-2'
-    style='transition: transform 0.3s; font-size: <?php echo $font_size; ?>;'>
-    <div class='container-fluid'>
-        <a class='navbar-brand d-flex align-items-center' href="<?php echo $logo['href']; ?>">
-            <img src="<?php echo $logo['image-path']; ?>" alt="<?php echo $logo['alt']; ?>"
-                style="height: <?php echo $logo['height-in-px']; ?>px; border-radius: <?php echo $logo['border-radius']; ?>; border: <?php echo $logo['border']; ?>;">
-            <span style="margin-left: 10px; font-weight: bold;">PulpuDev</span>
-        </a>
-        <button class='navbar-toggler' type='button' data-bs-toggle='collapse' data-bs-target='#navbarScroll'
-            aria-controls='navbarScroll' aria-expanded='false' aria-label='Toggle navigation'>
-            <span class='navbar-toggler-icon'></span>
-        </button>
-        <div class='collapse navbar-collapse text-center' id='navbarScroll'>
-            <ul class='navbar-nav ms-auto my-2 my-lg-0 navbar-nav-scroll' style='--bs-scroll-height: 300px;'>
-                <?php
+	style='transition: transform 0.3s; font-size: <?php echo $font_size; ?>;'>
+	<div class='container-fluid'>
+		<a class='navbar-brand d-flex align-items-center' href="<?php echo $logo['href']; ?>">
+			<img src="<?php echo $logo['image-path']; ?>" alt="<?php echo $logo['alt']; ?>"
+				style="height: <?php echo $logo['height-in-px']; ?>px; border-radius: <?php echo $logo['border-radius']; ?>; border: <?php echo $logo['border']; ?>;">
+			<span style="margin-left: 10px; font-weight: bold;">PulpuDev</span>
+		</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+			aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class='collapse navbar-collapse text-center' id='navbarScroll'>
+			<ul class='navbar-nav ms-auto my-2 my-lg-0 navbar-nav-scroll' style='--bs-scroll-height: 300px;'>
+				<?php
 				# Anchors
 				foreach ($anchors as $anchor) {
 					$background = "";
@@ -71,8 +71,8 @@
 				</li>
 ";
 				?>
-            </ul>
-        </div>
-    </div>
+			</ul>
+		</div>
+	</div>
 </nav>
-<script type='text/javascript' src='/components/navbar/script.js'></script>
+<script src="/components/navbar/script.js"></script>>

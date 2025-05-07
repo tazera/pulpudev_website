@@ -1,0 +1,118 @@
+.stack-hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+    overflow-x: hidden;
+    overflow-y: visible;
+    overflow: hidden;            /* hide any internal overflow on small screens */
+}
+
+.stack-wrapper {
+    position: relative;
+    width: clamp(var(--card-min-width), 85vw, var(--card-max-width));
+    aspect-ratio: var(--card-aspect-ratio);
+    perspective: var(--perspective-strength);
+    transform-style: preserve-3d;
+    overflow: visible;
+    max-height: 80vh;            /* never taller than 80% of viewport */
+}
+
+@media (max-width: 480px) {
+    :root {
+        --card-min-width: 260px;
+        --card-max-width: 360px;
+        --perspective-strength: 1000px;
+        --top-offset-x: 100px;
+        --top-offset-z: 120px;
+        --mid-offset-x: 30px;
+        --mid-offset-z: 80px;
+        --bot-offset-x: -30px;
+        --bot-offset-z: 40px;
+        --scale-top: 1.1;
+        --scale-mid: 1;
+        --scale-bot: 0.95;
+    }
+
+    .stack-wrapper {
+        width: 90vw;            /* allow a bit more breathing room */
+        max-height: 60vh;       /* reduce vertical footprint on phones */
+    }
+}
+
+.stack-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 24px 36px rgba(0, 0, 0, 0.25);
+    opacity: 0;
+    will-change: transform, opacity;
+    animation-fill-mode: forwards;
+    transform-origin: center center;
+}
+
+.img-top {
+    z-index: 3;
+    animation: popTop var(--pop-duration) var(--pop-ease) 0.1s both;
+}
+
+.img-mid {
+    z-index: 2;
+    animation: popMid var(--pop-duration) var(--pop-ease) 0.25s both;
+}
+
+.img-bottom {
+    z-index: 1;
+    animation: popBot var(--pop-duration) var(--pop-ease) 0.4s both;
+}
+
+@keyframes popTop {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, calc(var(--top-offset-y) + 225px), calc(var(--top-offset-z) - 80px)) rotateX(calc(var(--rotateX-top) + 3deg)) rotateY(calc(var(--rotateY-top) + 2deg)) scale(0.8);
+    }
+
+    60% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate3d(var(--top-offset-x), var(--top-offset-y), var(--top-offset-z)) rotateX(var(--rotateX-top)) rotateY(var(--rotateY-top)) scale(var(--scale-top));
+    }
+}
+
+@keyframes popMid {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, calc(var(--mid-offset-y) + 235px), calc(var(--mid-offset-z) - 80px)) rotateX(calc(var(--rotateX-mid) + 4deg)) rotateY(calc(var(--rotateY-mid) + 2deg)) scale(0.9);
+    }
+
+    60% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate3d(var(--mid-offset-x), var(--mid-offset-y), var(--mid-offset-z)) rotateX(var(--rotateX-mid)) rotateY(var(--rotateY-mid)) scale(var(--scale-mid));
+    }
+}
+
+@keyframes popBot {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, calc(var(--bot-offset-y) + 255px), calc(var(--bot-offset-z) - 90px)) rotateX(calc(var(--rotateX-bot) + 4deg)) rotateY(calc(var(--rotateY-bot) + 2deg)) scale(0.95);
+    }
+
+    60% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate3d(var(--bot-offset-x), var(--bot-offset-y), var(--bot-offset-z)) rotateX(var(--rotateX-bot)) rotateY(var(--rotateY-bot)) scale(var(--scale-bot));
+    }
+}
