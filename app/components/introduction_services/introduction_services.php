@@ -8,143 +8,143 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <style>
-    body {
-        background-color: #0E0E10;
-        color: #F7F8F8;
-        font-family: 'Inter', sans-serif;
-    }
+        body {
+            background-color: #0E0E10;
+            color: #F7F8F8;
+            font-family: 'Inter', sans-serif;
+        }
 
-    .section-padding {
-        padding: 100px 0;
-    }
+        .section-padding {
+            padding: 100px 0;
+        }
 
-    .card {
-        background-color: #1A1A1A;
-        border: none;
-        border-radius: 12px;
-        color: #F7F8F8;
-    }
+        .card {
+            background-color: #1A1A1A;
+            border: none;
+            border-radius: 12px;
+            color: #F7F8F8;
+        }
 
-    .card-img-right {
-        width: 260px;
-        height: 260px;
-        object-fit: contain;
-        border-radius: 12px;
-        margin-left: 2.5rem;
-        background: #232323;
-        padding: 18px;
-    }
+        .card-img-right {
+            width: 260px;
+            height: 260px;
+            object-fit: contain;
+            border-radius: 12px;
+            margin-left: 2.5rem;
+            background: #232323;
+            padding: 18px;
+        }
 
-    .top-card-title {
-        font-size: 2rem;
-        font-weight: 700;
-    }
+        .top-card-title {
+            font-size: 2rem;
+            font-weight: 700;
+        }
 
-    .top-card-text {
-        font-size: 1.05rem;
-    }
+        .top-card-text {
+            font-size: 1.05rem;
+        }
 
-    .top-card {
-        padding: 64px 48px;
-        min-height: 420px;
-    }
+        .top-card {
+            padding: 64px 48px;
+            min-height: 420px;
+        }
 
-    .bottom-card-title {
-        font-size: 2.2rem;
-        font-weight: 700;
-    }
+        .bottom-card-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+        }
 
-    .bottom-card-text {
-        font-size: 1.35rem;
-    }
+        .bottom-card-text {
+            font-size: 1.35rem;
+        }
 
-    .bottom-card-image img {
-        max-width: 100%;
-        border-radius: 12px;
-    }
+        .bottom-card-image img {
+            max-width: 100%;
+            border-radius: 12px;
+        }
 
-    .bottom-card-content {
-        display: flex;
-        align-items: center;
-        margin-left: 40px;
-        /* Move text closer to image */
-    }
-
-    .rotary-buttons {
-        display: flex;
-        flex-direction: column;
-        gap: 18px;
-        margin-right: 32px;
-        width: max-content;
-    }
-
-    .rotary-btn-row {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        width: 100%;
-        white-space: nowrap;
-    }
-
-    /* Remove underline on hover and set default gray for inactive rows */
-    .rotary-btn-label-link {
-        text-decoration: none;
-        color: #B0B0B0;
-    }
-
-    .rotary-btn-label-link:hover {
-        text-decoration: none;
-        /* no underline on hover */
-    }
-
-    .rotary-btn-row .vertical-line {
-        display: inline-block;
-        width: 3px;
-        height: 20px;
-        background: #3a3a3a;
-        margin-right: 6px;
-        vertical-align: middle;
-    }
-
-    /* Active row: filled line & white text */
-    .rotary-btn-row.selected .vertical-line {
-        background: #6EC6F6;
-    }
-
-    .rotary-btn-row.selected .rotary-btn-label-link {
-        color: #FFF;
-    }
-
-    @media (max-width: 991px) {
         .bottom-card-content {
-            margin-left: 0;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        .rotary-buttons-wrapper {
-            flex-direction: row;
-            align-items: flex-start;
-        }
-
-        .rotary-buttons-separator {
-            height: 80px;
-            margin-left: 12px;
-            margin-right: 0;
+            display: flex;
+            align-items: center;
+            margin-left: 40px;
+            /* Move text closer to image */
         }
 
         .rotary-buttons {
+            display: flex;
             flex-direction: column;
-            margin-bottom: 16px;
-            margin-right: 0;
+            gap: 18px;
+            margin-right: 32px;
+            width: max-content;
         }
 
         .rotary-btn-row {
-            flex-direction: row;
+            display: flex;
             align-items: center;
             gap: 8px;
+            width: 100%;
+            white-space: nowrap;
         }
-    }
+
+        /* Remove underline on hover and set default gray for inactive rows */
+        .rotary-btn-label-link {
+            text-decoration: none;
+            color: #B0B0B0;
+        }
+
+        .rotary-btn-label-link:hover {
+            text-decoration: none;
+            /* no underline on hover */
+        }
+
+        .rotary-btn-row .vertical-line {
+            display: inline-block;
+            width: 3px;
+            height: 20px;
+            background: #3a3a3a;
+            margin-right: 6px;
+            vertical-align: middle;
+        }
+
+        /* Active row: filled line & white text */
+        .rotary-btn-row.selected .vertical-line {
+            background: #6EC6F6;
+        }
+
+        .rotary-btn-row.selected .rotary-btn-label-link {
+            color: #FFF;
+        }
+
+        @media (max-width: 991px) {
+            .bottom-card-content {
+                margin-left: 0;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .rotary-buttons-wrapper {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+
+            .rotary-buttons-separator {
+                height: 80px;
+                margin-left: 12px;
+                margin-right: 0;
+            }
+
+            .rotary-buttons {
+                flex-direction: column;
+                margin-bottom: 16px;
+                margin-right: 0;
+            }
+
+            .rotary-btn-row {
+                flex-direction: row;
+                align-items: center;
+                gap: 8px;
+            }
+        }
     </style>
 </head>
 
@@ -181,19 +181,19 @@
                     <div class="bottom-card-content">
                         <div class="rotary-buttons-wrapper">
                             <div class="rotary-buttons">
-                                <div class="rotary-btn-row">
+                                <div class="rotary-btn-row" data-title="Collaborative documents" data-description="Work together in real-time with your team on documents and specifications. Everyone stays on the same page with synchronized editing.">
                                     <a href="#" class="rotary-btn-label-link" aria-label="Collaborative documents">
                                         <span class="rotary-btn"><span class="vertical-line"></span></span>
                                         Collaborative documents
                                     </a>
                                 </div>
-                                <div class="rotary-btn-row">
+                                <div class="rotary-btn-row" data-title="Inline comments" data-description="Add context-specific feedback directly in documents. Discuss ideas, suggest changes, and resolve questions without leaving your workflow.">
                                     <a href="#" class="rotary-btn-label-link" aria-label="Inline comments">
                                         <span class="rotary-btn"><span class="vertical-line"></span></span>
                                         Inline comments
                                     </a>
                                 </div>
-                                <div class="rotary-btn-row">
+                                <div class="rotary-btn-row" data-title="Text-to-issue commands" data-description="Convert any text into actionable tasks with simple commands. Create, assign, and track issues without disrupting your documentation process.">
                                     <a href="#" class="rotary-btn-label-link" aria-label="Text-to-issue commands">
                                         <span class="rotary-btn"><span class="vertical-line"></span></span>
                                         Text-to-issue commands
@@ -202,9 +202,9 @@
                             </div>
                             <div class="rotary-buttons-separator"></div>
                         </div>
-                        <div>
-                            <h3 class="bottom-card-title mb-3">Project and long-term planning</h3>
-                            <p class="bottom-card-text">
+                        <div id="rotary-content">
+                            <h3 id="content-title" class="bottom-card-title mb-3">Project and long-term planning</h3>
+                            <p id="content-description" class="bottom-card-text">
                                 Align your team around a unified product timeline. Plan, manage, and track all product
                                 initiatives with visual planning tools inspired by Linear.
                             </p>
@@ -216,24 +216,67 @@
                     </div>
                 </div>
                 <div class="col-md-6 bottom-card-image text-end order-2 order-md-2">
-                    <img src="/images/screenshot.png" alt="Project Overview Screenshot" />
+                    <img id="content-image" src="/images/screenshot.png" alt="Project Overview Screenshot" data-default-src="/images/screenshot.png" data-collaborative-src="/images/home/image1.png" data-comments-src="/images/home/image2.png" data-commands-src="/images/home/image3.webp" />
                 </div>
             </div>
         </div>
     </section>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const rows = document.querySelectorAll('.rotary-btn-row');
-        rows[0].classList.add('selected'); // first row active on load
+        document.addEventListener('DOMContentLoaded', function() {
+            const rows = document.querySelectorAll('.rotary-btn-row');
+            const contentTitle = document.getElementById('content-title');
+            const contentDescription = document.getElementById('content-description');
+            const contentImage = document.getElementById('content-image');
+            const defaultTitle = contentTitle.textContent;
+            const defaultDescription = contentDescription.textContent;
 
-        rows.forEach(row => {
-            row.addEventListener('click', () => {
-                rows.forEach(r => r.classList.remove('selected'));
-                row.classList.add('selected');
+            // Store default content
+            const defaultContent = {
+                title: defaultTitle,
+                description: defaultDescription,
+                image: contentImage.getAttribute('data-default-src')
+            };
+
+            // Set first row as active on load
+            rows[0].classList.add('selected');
+
+            rows.forEach((row, index) => {
+                row.addEventListener('click', (e) => {
+                    e.preventDefault();
+
+                    // Remove selected class from all rows
+                    rows.forEach(r => r.classList.remove('selected'));
+
+                    // Add selected class to clicked row
+                    row.classList.add('selected');
+
+                    // Get content from data attributes
+                    const title = row.getAttribute('data-title');
+                    const description = row.getAttribute('data-description');
+
+                    // Change content based on which button was clicked
+                    if (index === 0) { // Collaborative documents
+                        contentImage.src = contentImage.getAttribute('data-collaborative-src');
+                        contentTitle.textContent = title;
+                        contentDescription.textContent = description;
+                    } else if (index === 1) { // Inline comments
+                        contentImage.src = contentImage.getAttribute('data-comments-src');
+                        contentTitle.textContent = title;
+                        contentDescription.textContent = description;
+                    } else if (index === 2) { // Text-to-issue commands
+                        contentImage.src = contentImage.getAttribute('data-commands-src');
+                        contentTitle.textContent = title;
+                        contentDescription.textContent = description;
+                    } else {
+                        // Reset to default if somehow another button is clicked
+                        contentImage.src = defaultContent.image;
+                        contentTitle.textContent = defaultContent.title;
+                        contentDescription.textContent = defaultContent.description;
+                    }
+                });
             });
         });
-    });
     </script>
 </body>
 

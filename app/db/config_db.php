@@ -54,9 +54,9 @@ $phrases = [
 	[
 		'KEY' => 'navbar-design',
 		'TRANSLATIONS' => [
-			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Design'],
-			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Дизайн'],
-			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Design'],
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Products'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Продукти'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Produkte'],
 		]
 	],
 	[
