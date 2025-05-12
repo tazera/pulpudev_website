@@ -102,6 +102,19 @@
                 /* Allow height to adjust to content */
             }
 
+            /* Responsive adjustments for projects section */
+            .projects-section {
+                padding: 3rem 0;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .section-subtitle {
+                font-size: 1rem;
+            }
+
             .top-card-title {
                 font-size: 1.6rem;
                 /* Smaller font on mobile */
@@ -163,6 +176,44 @@
             color: #FFF;
         }
 
+        /* Projects Section Styling */
+        .projects-section {
+            padding: 6rem 0;
+            background-color: transparent;
+            color: var(--bs-light);
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #b0b0b0;
+            margin-bottom: 3rem;
+            font-weight: 400;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .project-cta-btn {
+            background: linear-gradient(90deg, rgba(255, 136, 0, 0.1) 0%, rgba(211, 61, 16, 0.1) 100%);
+            border: 1px solid rgba(255, 136, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .project-cta-btn:hover {
+            background: linear-gradient(90deg, rgba(255, 136, 0, 0.2) 0%, rgba(211, 61, 16, 0.2) 100%);
+            border: 1px solid rgba(255, 136, 0, 0.5);
+            transform: translateY(-2px);
+        }
+
         @media (max-width: 991px) {
             .bottom-card-content {
                 margin-left: 0;
@@ -206,7 +257,16 @@
 </head>
 
 <body>
+
     <section class="section-padding">
+
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Our Work</h2>
+                <p class="section-subtitle mx-auto">We've partnered with ambitious companies to build products that make a difference.
+                    Here are some of our recent projects and the results they've achieved.</p>
+            </div>
+        </div>
         <div class="container">
             <!-- Top two cards -->
             <div class="row g-4 mb-4 align-items-stretch">
@@ -341,6 +401,8 @@
             });
         });
     </script>
+
+
 </body>
 
 </html>

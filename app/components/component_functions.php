@@ -17,5 +17,6 @@ function footer($copyright_phrase, $links)
 
 function project($customProjects = null)
 {
+	// Pass customProjects to the scope of the included file
 	require("{$_SERVER['DOCUMENT_ROOT']}/components/project/project.php");
 }
