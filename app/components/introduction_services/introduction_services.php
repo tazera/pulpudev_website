@@ -262,7 +262,7 @@
 
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class="section-title">Our Work</h2>
+                <h2 class="section-title">Our Services</h2>
                 <p class="section-subtitle mx-auto">We've partnered with ambitious companies to build products that make a difference.
                     Here are some of our recent projects and the results they've achieved.</p>
             </div>
