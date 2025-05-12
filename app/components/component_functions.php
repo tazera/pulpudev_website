@@ -14,3 +14,8 @@ function footer($copyright_phrase, $links)
 {
 	require("{$_SERVER['DOCUMENT_ROOT']}/components/footer/footer.php");
 }
+
+function project($customProjects = null)
+{
+	require("{$_SERVER['DOCUMENT_ROOT']}/components/project/project.php");
+}
