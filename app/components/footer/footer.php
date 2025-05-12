@@ -3,7 +3,7 @@
         <!-- Logo Column -->
         <div class="col mb-3 ps-3 ps-sm-4">
             <a href="#" class="d-flex align-items-center mb-3 link-body-emphasis text-decoration-none">
-                <img src="/images/logo.png" alt="logo" style="height: 44px; border-radius: 10px;">
+                <img src="/images/logo.png" alt="logo" width="50" height="50" style="height: 44px; border-radius: 10px;">
                 <h3 class="ms-2 fw-bold text-body-emphasis">Pulpudev</h3>
             </a>
             <p class="text-body-secondary">© Copyright 2025.<br> All Rights Reserved.</p>
@@ -35,12 +35,12 @@
             <h3>Connect with us!</h3>
             <ul class='nav flex-column'>
                 <?php foreach ($links as $link): ?>
-                <li class='ms-0 ms-md-3'>
-                    <a class='text-body-secondary' href='<?= $link['href'] ?>' target='_blank'>
-                        <img src='<?= $link['image'] ?>' alt='<?= $link['alt'] ?>' class='rounded mt-3 img-fluid'
-                            style='height: 60px; border: 1px solid black;'>
-                    </a>
-                </li>
+                    <li class='ms-0 ms-md-3'>
+                        <a class='text-body-secondary' href='<?= $link['href'] ?>' target='_blank'>
+                            <img src='<?= $link['image'] ?>' alt='<?= $link['alt'] ?>' width="370" height="110" class='rounded mt-3 img-fluid'
+                                style='height: 60px; border: 1px solid black;'>
+                        </a>
+                    </li>
                 <?php endforeach; ?>
             </ul>
         </div>

@@ -61,6 +61,8 @@
         .bottom-card-image img {
             max-width: 100%;
             border-radius: 12px;
+            height: auto;
+            width: auto;
         }
 
         .bottom-card-content {
@@ -68,6 +70,52 @@
             align-items: center;
             margin-left: 40px;
             /* Move text closer to image */
+        }
+
+        /* Enhanced responsiveness for bottom card image */
+        @media (max-width: 991px) {
+            .bottom-card-image {
+                margin-top: 30px;
+                text-align: center;
+                /* Center image on smaller screens */
+            }
+
+            .bottom-card-image img {
+                max-width: 90%;
+                /* Prevent image from touching edges */
+                margin: 0 auto;
+                /* Center the image */
+            }
+        }
+
+        /* Additional optimization for very small screens */
+        @media (max-width: 576px) {
+            .bottom-card-image img {
+                max-width: 100%;
+                /* Use full width on very small screens */
+            }
+
+            .top-card {
+                padding: 30px 20px;
+                /* Reduce padding on small screens */
+                min-height: auto;
+                /* Allow height to adjust to content */
+            }
+
+            .top-card-title {
+                font-size: 1.6rem;
+                /* Smaller font on mobile */
+            }
+
+            .bottom-card-title {
+                font-size: 1.8rem;
+                /* Smaller font on mobile */
+            }
+
+            .bottom-card-text {
+                font-size: 1.1rem;
+                /* Smaller font on mobile */
+            }
         }
 
         .rotary-buttons {
@@ -125,6 +173,8 @@
             .rotary-buttons-wrapper {
                 flex-direction: row;
                 align-items: flex-start;
+                width: 100%;
+                /* Ensure full width */
             }
 
             .rotary-buttons-separator {
@@ -137,6 +187,13 @@
                 flex-direction: column;
                 margin-bottom: 16px;
                 margin-right: 0;
+                width: 100%;
+                /* Use full width on mobile */
+            }
+
+            #rotary-content {
+                margin-top: 20px;
+                /* Add space between buttons and content */
             }
 
             .rotary-btn-row {
@@ -161,7 +218,7 @@
                             <p class="mb-0 top-card-text">Consolidate specs, milestones, tasks, and other documentation
                                 in one centralized location.</p>
                         </div>
-                        <img src="/images/screenshot.png" alt="Specs" class="card-img-right d-none d-md-block" />
+                        <img src="/images/screenshot.png" alt="Specs" width="400" height="220" class="card-img-right d-none d-md-block" />
                     </div>
                 </div>
                 <div class="col-12 col-lg-6 d-flex">
@@ -171,7 +228,7 @@
                             <p class="mb-0 top-card-text">Communicate progress and project health with built-in project
                                 updates.</p>
                         </div>
-                        <img src="/images/screenshot.png" alt="Updates" class="card-img-right d-none d-md-block" />
+                        <img src="/images/screenshot.png" alt="Updates" width="400" height="220" class="card-img-right d-none d-md-block" />
                     </div>
                 </div>
             </div>
@@ -216,7 +273,7 @@
                     </div>
                 </div>
                 <div class="col-md-6 bottom-card-image text-end order-2 order-md-2">
-                    <img id="content-image" src="/images/screenshot.png" alt="Project Overview Screenshot" data-default-src="/images/screenshot.png" data-collaborative-src="/images/home/image1.png" data-comments-src="/images/home/image2.png" data-commands-src="/images/home/image3.webp" />
+                    <img id="content-image" src="/images/screenshot.png" alt="Project Overview Screenshot" width="400" height="220" data-default-src="/images/screenshot.png" data-collaborative-src="/images/home/image1.png" data-comments-src="/images/home/image2.png" data-commands-src="/images/home/image3.webp" />
                 </div>
             </div>
         </div>
@@ -228,14 +285,20 @@
             const contentTitle = document.getElementById('content-title');
             const contentDescription = document.getElementById('content-description');
             const contentImage = document.getElementById('content-image');
-            const defaultTitle = contentTitle.textContent;
-            const defaultDescription = contentDescription.textContent;
 
-            // Store default content
+            // Set initial content to the first button (Collaborative documents)
+            const firstRow = rows[0];
+            const firstTitle = firstRow.getAttribute('data-title');
+            const firstDescription = firstRow.getAttribute('data-description');
+            contentTitle.textContent = firstTitle;
+            contentDescription.textContent = firstDescription;
+            contentImage.src = contentImage.getAttribute('data-collaborative-src');
+
+            // Store default content for reset functionality
             const defaultContent = {
-                title: defaultTitle,
-                description: defaultDescription,
-                image: contentImage.getAttribute('data-default-src')
+                title: firstTitle,
+                description: firstDescription,
+                image: contentImage.getAttribute('data-collaborative-src')
             };
 
             // Set first row as active on load

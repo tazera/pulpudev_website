@@ -1,9 +1,29 @@
 <link rel="stylesheet" href="/components/navbar/styles.css">
+<style>
+	/* Fix for mobile navbar underline issue */
+	@media (max-width: 991px) {
+		.navbar-nav .nav-link {
+			display: inline-block;
+			width: auto;
+			text-align: center;
+		}
+
+		.dropdown-item {
+			width: auto;
+			display: inline-block;
+			text-align: center;
+		}
+
+		.navbar-collapse.text-center .navbar-nav {
+			align-items: center;
+		}
+	}
+</style>
 <nav class='navbar fixed-top navbar-expand-lg <?php echo $_SESSION['theme'] == "dark" ? "navbar-dark" : "navbar-light"; ?> bg-body-tertiary w-100 px-2'
 	style='transition: transform 0.3s; font-size: <?php echo $font_size; ?>;'>
 	<div class='container-fluid'>
 		<a class='navbar-brand d-flex align-items-center' href="<?php echo $logo['href']; ?>">
-			<img src="<?php echo $logo['image-path']; ?>" alt="<?php echo $logo['alt']; ?>"
+			<img src="<?php echo $logo['image-path']; ?>" alt="<?php echo $logo['alt']; ?>" width="50" height="50"
 				style="height: <?php echo $logo['height-in-px']; ?>px; border-radius: <?php echo $logo['border-radius']; ?>; border: <?php echo $logo['border']; ?>;">
 			<span style="margin-left: 10px; font-weight: bold;">PulpuDev</span>
 		</a>
@@ -54,7 +74,7 @@
 				echo "
 				<li class='nav-item dropdown me-2'>
 					<a class='nav-link dropdown-toggle' href='/components/navbar/change_language.php?language={$_SESSION['language']}' role='button' data-bs-toggle='dropdown' aria-expanded='false'>
-						<img src='/images/languages/{$_SESSION['language']}.webp' alt='{$_SESSION['language']}' style='height: 22px; width: 22px; border-radius: 10px;'>
+						<img src='/images/languages/{$_SESSION['language']}.webp' alt='{$_SESSION['language']}'  style='height: 22px; width: 22px; border-radius: 10px;'>
 					</a>
 					<ul class='dropdown-menu'>
 ";
