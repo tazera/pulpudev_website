@@ -51,11 +51,11 @@
        positive = tilt right edge away (card leans left)
        negative = tilt right edge towards (card leans right)
      ========================== */
-            --rotateX-top: 40deg;
+            --rotateX-top: 30deg;
             --rotateY-top: 0deg;
-            --rotateX-mid: 40deg;
+            --rotateX-mid: 30deg;
             --rotateY-mid: 0deg;
-            --rotateX-bot: 40deg;
+            --rotateX-bot: 30deg;
             --rotateY-bot: 0deg;
 
             /* ==========================
