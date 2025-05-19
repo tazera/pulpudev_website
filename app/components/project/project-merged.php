@@ -127,7 +127,7 @@ $featured_projects = array_slice($display_projects, 0, min(3, count($display_pro
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>
-    </div>    <!-- Project Modal - Opens when a project card is clicked -->
+    </div> <!-- Project Modal - Opens when a project card is clicked -->
     <div id="projectModal" class="project-modal">
         <div class="modal-content">
             <!-- Modal Header with title and close button -->
@@ -135,18 +135,18 @@ $featured_projects = array_slice($display_projects, 0, min(3, count($display_pro
                 <h2 id="modalTitle"></h2>
                 <button class="modal-close" aria-label="Close modal">&times;</button>
             </div>
-            
+
             <!-- Navigation arrows for modal - allows users to navigate between projects while in detail view -->
             <button class="modal-nav modal-prev" aria-label="Previous project">&lsaquo;</button>
             <button class="modal-nav modal-next" aria-label="Next project">&rsaquo;</button>
-            
+
             <!-- Modal Body with project details and media -->
             <div class="modal-body">
                 <!-- Left side: Project details (challenge, solution, results) -->
                 <div class="project-details" id="projectDetails">
                     <!-- Will be populated by JavaScript -->
                 </div>
-                
+
                 <!-- Right side: Media gallery (images and videos) -->
                 <div class="media-list" id="projectMedia">
                     <!-- Will be populated by JavaScript -->
@@ -171,15 +171,15 @@ $featured_projects = array_slice($display_projects, 0, min(3, count($display_pro
     document.addEventListener('DOMContentLoaded', function() {
         // Load project data from PHP into JavaScript
         const projectsData = <?php echo json_encode($display_projects); ?>;
-        
+
         // Current project being viewed in the modal
         let currentModalIndex = 0;
-        
+
         // DOM element references - Carousel
         const carousel = document.querySelector('.carousel');
         const leftArrow = document.querySelector('.arrow.left');
         const rightArrow = document.querySelector('.arrow.right');
-        
+
         // DOM element references - Modal
         const modal = document.getElementById('projectModal');
         const modalClose = document.querySelector('.modal-close');
@@ -188,7 +188,7 @@ $featured_projects = array_slice($display_projects, 0, min(3, count($display_pro
         const projectDetails = document.getElementById('projectDetails');
         const projectMedia = document.getElementById('projectMedia');
         const modalTitle = document.getElementById('modalTitle');
-        
+
         /**
          * Carousel Navigation - Main project carousel
          * Implements circular navigation through featured projects
@@ -197,7 +197,7 @@ $featured_projects = array_slice($display_projects, 0, min(3, count($display_pro
             // Left arrow click handler
             leftArrow.addEventListener('click', function(e) {
                 e.stopPropagation(); // Prevent triggering card click
-                
+
                 // Move the first card to the end - creates visual carousel effect
                 const firstCard = carousel.firstElementChild;
                 carousel.appendChild(firstCard);
@@ -206,12 +206,13 @@ $featured_projects = array_slice($display_projects, 0, min(3, count($display_pro
             // Right arrow click handler
             rightArrow.addEventListener('click', function(e) {
                 e.stopPropagation(); // Prevent triggering card click
-                
+
                 // Move the last card to the beginning - creates visual carousel effect
                 const lastCard = carousel.lastElementChild;
                 carousel.prepend(lastCard);
             });
-        }        /**
+        }
+        /**
          * Project Card Click Event Handlers
          * Adds click listeners to all project cards to show details in modal
          */
@@ -222,9 +223,7 @@ $featured_projects = array_slice($display_projects, 0, min(3, count($display_pro
                 currentModalIndex = index; // Update current index for modal navigation
                 showProjectDetails(projectsData[index]);
             });
-        });
-
-        /**
+        });        /**
          * Modal Navigation Handlers
          * Allow users to navigate between projects while in the modal view
          */
@@ -233,6 +232,9 @@ $featured_projects = array_slice($display_projects, 0, min(3, count($display_pro
             e.stopPropagation();
             currentModalIndex = (currentModalIndex - 1 + projectsData.length) % projectsData.length;
             showProjectDetails(projectsData[currentModalIndex]);
+            // Add a brief highlight effect on click
+            this.classList.add('nav-clicked');
+            setTimeout(() => this.classList.remove('nav-clicked'), 300);
         });
         
         // Next project button in modal
@@ -240,6 +242,9 @@ $featured_projects = array_slice($display_projects, 0, min(3, count($display_pro
             e.stopPropagation();
             currentModalIndex = (currentModalIndex + 1) % projectsData.length;
             showProjectDetails(projectsData[currentModalIndex]);
+            // Add a brief highlight effect on click
+            this.classList.add('nav-clicked');
+            setTimeout(() => this.classList.remove('nav-clicked'), 300);
         });
 
         /**
@@ -256,23 +261,27 @@ $featured_projects = array_slice($display_projects, 0, min(3, count($display_pro
             if (event.target === modal) {
                 closeModal();
             }
-        });
-        
-        // ESC key to close modal
+        });        // Keyboard navigation for modal
         document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape' && modal.style.display === 'flex') {
-                closeModal();
-            }
-            // Left/Right arrow keys for navigation
             if (modal.style.display === 'flex') {
+                // ESC key to close modal
+                if (event.key === 'Escape') {
+                    closeModal();
+                }
+                
+                // Left/Right arrow keys for navigation with visual feedback
                 if (event.key === 'ArrowLeft') {
+                    modalPrev.classList.add('nav-clicked');
+                    setTimeout(() => modalPrev.classList.remove('nav-clicked'), 300);
                     modalPrev.click();
                 } else if (event.key === 'ArrowRight') {
+                    modalNext.classList.add('nav-clicked');
+                    setTimeout(() => modalNext.classList.remove('nav-clicked'), 300);
                     modalNext.click();
                 }
             }
         });
-        
+
         /**
          * Close the project modal and restore page scrolling
          */
@@ -290,12 +299,12 @@ $featured_projects = array_slice($display_projects, 0, min(3, count($display_pro
             // Apply transition effect
             projectDetails.style.opacity = '0';
             projectMedia.style.opacity = '0';
-            
+
             // Short timeout for smooth transition
             setTimeout(() => {
                 // Update modal title
                 modalTitle.textContent = project.title;
-    
+
                 // Build details HTML with sections for challenge, solution, and results
                 let detailsHTML = `
                     <p class="project-description">${project.description}</p>
@@ -328,13 +337,13 @@ $featured_projects = array_slice($display_projects, 0, min(3, count($display_pro
                         ` : ''}
                     </div>
                 `;
-    
+
                 // Update project details content
                 projectDetails.innerHTML = detailsHTML;
-    
+
                 // Build media gallery HTML
                 let mediaHTML = '';
-                
+
                 // Process media array if it exists
                 if (project.media && project.media.length) {
                     project.media.forEach(media => {
@@ -356,10 +365,10 @@ $featured_projects = array_slice($display_projects, 0, min(3, count($display_pro
                     // Fallback if no media array is present
                     mediaHTML = `<img src="${project.image}" alt="${project.title}" loading="lazy">`;
                 }
-    
+
                 // Update media gallery content
                 projectMedia.innerHTML = mediaHTML;
-                
+
                 // Fade elements back in
                 projectDetails.style.opacity = '1';
                 projectMedia.style.opacity = '1';
