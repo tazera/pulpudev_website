@@ -20,11 +20,10 @@ init(basename($_SERVER['PHP_SELF']), $default_theme);
     <?php require_once("{$_SERVER['DOCUMENT_ROOT']}/components/background_animation/animation.php"); ?>
     <?php require_once("{$_SERVER['DOCUMENT_ROOT']}/pages/global_modules/m_navbar.php"); ?>
     <div class="content" style="padding-top:70px;"></div>
-    <?php
-    require_once("{$_SERVER['DOCUMENT_ROOT']}/components/introduction/introduction.php");
+    <?php require_once("{$_SERVER['DOCUMENT_ROOT']}/components/introduction/introduction.php");
     require_once("{$_SERVER['DOCUMENT_ROOT']}/components/layered_image_view/layered_image_view.php");
     require_once("{$_SERVER['DOCUMENT_ROOT']}/components/introduction_services/introduction_services.php");
-    require_once("{$_SERVER['DOCUMENT_ROOT']}/components/project/project.php");
+    require_once("{$_SERVER['DOCUMENT_ROOT']}/components/project/project-merged.php");
     require_once("{$_SERVER['DOCUMENT_ROOT']}/components/contact/contact.php");
     require_once("{$_SERVER['DOCUMENT_ROOT']}/pages/global_modules/m_footer.php");
     ?>

@@ -1,0 +1,338 @@
+/**
+ * Merged Project Component
+ * Combines the card-based design with carousel and modal functionality
+ */
+
+/* Main section styling */
+.projects-section {
+  padding: 6rem 0;
+  background-color: transparent;
+  /* Changed to transparent to show background animation */
+  color: var(--bs-light);
+  position: relative;
+  z-index: 1;
+}
+
+/* Section heading typography */
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+/* Section description styling */
+.section-subtitle {
+  font-size: 1.2rem;
+  color: #b0b0b0;
+  margin-bottom: 3rem;
+  font-weight: 400;
+  max-width: 700px;
+}
+
+/* Carousel container for featured projects */
+.carousel-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto 4rem auto;
+}
+
+/* Arrow navigation for carousel */
+.arrow {
+  background: none;
+  border: none;
+  font-size: 3rem;
+  cursor: pointer;
+  padding: 0 10px;
+  color: rgba(255, 255, 255, 0.6);
+  transition: color 0.3s ease;
+}
+
+.arrow:hover {
+  color: #ff8800;
+}
+
+/* Carousel display */
+.carousel {
+  display: flex;
+  width: 100%;
+  gap: 20px;
+}
+
+/* Project card styling with glass-morphism effect */
+.project-card {
+  background-color: rgba(30, 30, 30, 0.7);
+  /* Semi-transparent background */
+  backdrop-filter: blur(10px);
+  /* Glass effect */
+  -webkit-backdrop-filter: blur(10px);
+  /* Safari support */
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  height: 100%;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* Project image styling */
+.project-image {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.4s ease;
+}
+
+.project-card:hover .project-image {
+  transform: scale(1.05);
+}
+
+/* Content area styling */
+.project-content {
+  padding: 1.5rem;
+}
+
+/* Tag styling with gradient */
+.project-tag {
+  display: inline-block;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 136, 0, 0.1) 0%,
+    rgba(211, 61, 16, 0.1) 100%
+  );
+  color: #ff8800;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.project-tag:hover {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 136, 0, 0.2) 0%,
+    rgba(211, 61, 16, 0.2) 100%
+  );
+  transform: translateY(-1px);
+}
+
+/* Project title styling */
+.project-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0.75rem 0;
+  letter-spacing: -0.01em;
+}
+
+/* Project description styling */
+.project-description {
+  font-size: 0.95rem;
+  color: #b0b0b0;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+/* Modal styles for detailed project view */
+.project-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: rgba(30, 30, 30, 0.95);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  width: 90%;
+  max-width: 1200px;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  max-height: 90vh;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-body {
+  display: flex;
+  overflow: hidden;
+}
+
+.project-details {
+  width: 40%;
+  padding: 30px;
+  overflow-y: auto;
+  color: #fff;
+}
+
+.project-details h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+  background: linear-gradient(90deg, #ff8800 0%, #ff5722 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.media-list {
+  width: 60%;
+  padding: 30px;
+  overflow-y: auto;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  height: 600px;
+}
+
+.media-list img,
+.media-list video {
+  width: 100%;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.modal-close {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 2rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  padding: 0;
+  line-height: 1;
+}
+
+.modal-close:hover {
+  color: #ff8800;
+}
+
+/* Detail sections in modal */
+.detail-section {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.detail-section-title {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #888;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.detail-section-content {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #b0b0b0;
+}
+
+/* Metrics styling with gradient text */
+.result-metric {
+  font-size: 1.8rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #ff8800 0%, #ff5722 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Featured projects section */
+.featured-projects {
+  margin-bottom: 4rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .projects-section {
+    padding: 5rem 0;
+  }
+
+  .section-title {
+    font-size: 2.2rem;
+  }
+
+  .modal-body {
+    flex-direction: column;
+  }
+
+  .project-details,
+  .media-list {
+    width: 100%;
+    height: auto;
+  }
+
+  .media-list {
+    border-left: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+@media (max-width: 768px) {
+  .projects-section {
+    padding: 4rem 0;
+  }
+
+  .project-card {
+    margin-bottom: 2rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .section-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .carousel {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 576px) {
+  .projects-section {
+    padding: 3rem 0;
+  }
+
+  .result-metric {
+    font-size: 1.5rem;
+  }
+
+  .modal-content {
+    width: 95%;
+  }
+
+  .project-details {
+    padding: 20px;
+  }
+}

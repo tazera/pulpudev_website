@@ -39,10 +39,7 @@ $display_projects = isset($customProjects) && is_array($customProjects) && !empt
             'tags' => ['Data Analytics', 'Dashboard'],
             'title' => 'Healthcare Analytics Platform',
             'description' => 'Data visualization and analytics dashboard for healthcare providers tracking patient outcomes.',
-            'challenge' => 'Healthcare providers struggled with disconnected data systems and lacked insights for improving patient care.',
-            'solution' => 'We built a HIPAA-compliant analytics platform that unified patient data from multiple sources with customizable dashboards.',
-            'result' => 'Enabled data-driven decisions that reduced average hospital stay duration by 1.5 days and improved resource allocation.',
-            'metrics' => ['1.5 days shorter stays', '$2.4M annual savings']
+
         ]
     ];
 ?>
