@@ -127,19 +127,27 @@ $featured_projects = array_slice($display_projects, 0, min(3, count($display_pro
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>
-    </div>
-
-    <!-- Project Modal -->
+    </div>    <!-- Project Modal - Opens when a project card is clicked -->
     <div id="projectModal" class="project-modal">
         <div class="modal-content">
+            <!-- Modal Header with title and close button -->
             <div class="modal-header">
                 <h2 id="modalTitle"></h2>
                 <button class="modal-close" aria-label="Close modal">&times;</button>
             </div>
+            
+            <!-- Navigation arrows for modal - allows users to navigate between projects while in detail view -->
+            <button class="modal-nav modal-prev" aria-label="Previous project">&lsaquo;</button>
+            <button class="modal-nav modal-next" aria-label="Next project">&rsaquo;</button>
+            
+            <!-- Modal Body with project details and media -->
             <div class="modal-body">
+                <!-- Left side: Project details (challenge, solution, results) -->
                 <div class="project-details" id="projectDetails">
                     <!-- Will be populated by JavaScript -->
                 </div>
+                
+                <!-- Right side: Media gallery (images and videos) -->
                 <div class="media-list" id="projectMedia">
                     <!-- Will be populated by JavaScript -->
                 </div>
@@ -151,129 +159,213 @@ $featured_projects = array_slice($display_projects, 0, min(3, count($display_pro
 <script>
     /**
      * Project Component JavaScript
-     * Handles carousel and modal functionality
+     * 
+     * This script handles:
+     * 1. Carousel functionality for featured projects section
+     * 2. Modal display with project details when a card is clicked
+     * 3. Navigation between projects within the modal
+     * 
+     * @version 2.1
+     * @author PulpuDev
      */
     document.addEventListener('DOMContentLoaded', function() {
-        // Projects data from PHP
+        // Load project data from PHP into JavaScript
         const projectsData = <?php echo json_encode($display_projects); ?>;
-
-        // Set up carousel navigation
+        
+        // Current project being viewed in the modal
+        let currentModalIndex = 0;
+        
+        // DOM element references - Carousel
         const carousel = document.querySelector('.carousel');
         const leftArrow = document.querySelector('.arrow.left');
         const rightArrow = document.querySelector('.arrow.right');
-        let currentIndex = 0;
-
-        // Set up modal
+        
+        // DOM element references - Modal
         const modal = document.getElementById('projectModal');
         const modalClose = document.querySelector('.modal-close');
+        const modalPrev = document.querySelector('.modal-prev');
+        const modalNext = document.querySelector('.modal-next');
         const projectDetails = document.getElementById('projectDetails');
         const projectMedia = document.getElementById('projectMedia');
-
-        // Handle carousel navigation
+        const modalTitle = document.getElementById('modalTitle');
+        
+        /**
+         * Carousel Navigation - Main project carousel
+         * Implements circular navigation through featured projects
+         */
         if (leftArrow && rightArrow) {
-            // Left arrow click
-            leftArrow.addEventListener('click', function() {
-                // Move the first card to the end
+            // Left arrow click handler
+            leftArrow.addEventListener('click', function(e) {
+                e.stopPropagation(); // Prevent triggering card click
+                
+                // Move the first card to the end - creates visual carousel effect
                 const firstCard = carousel.firstElementChild;
                 carousel.appendChild(firstCard);
             });
 
-            // Right arrow click
-            rightArrow.addEventListener('click', function() {
-                // Move the last card to the beginning
+            // Right arrow click handler
+            rightArrow.addEventListener('click', function(e) {
+                e.stopPropagation(); // Prevent triggering card click
+                
+                // Move the last card to the beginning - creates visual carousel effect
                 const lastCard = carousel.lastElementChild;
                 carousel.prepend(lastCard);
             });
-        }
-
-        // Set up click handlers for all project cards
+        }        /**
+         * Project Card Click Event Handlers
+         * Adds click listeners to all project cards to show details in modal
+         */
         const projectCards = document.querySelectorAll('.project-card');
         projectCards.forEach(card => {
             card.addEventListener('click', function() {
                 const index = parseInt(this.dataset.index, 10);
-                showProjectDetails(projectsData[index], index);
+                currentModalIndex = index; // Update current index for modal navigation
+                showProjectDetails(projectsData[index]);
             });
         });
 
-        // Modal close button
-        modalClose.addEventListener('click', function() {
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto'; // Re-enable scrolling
+        /**
+         * Modal Navigation Handlers
+         * Allow users to navigate between projects while in the modal view
+         */
+        // Previous project button in modal
+        modalPrev.addEventListener('click', function(e) {
+            e.stopPropagation();
+            currentModalIndex = (currentModalIndex - 1 + projectsData.length) % projectsData.length;
+            showProjectDetails(projectsData[currentModalIndex]);
+        });
+        
+        // Next project button in modal
+        modalNext.addEventListener('click', function(e) {
+            e.stopPropagation();
+            currentModalIndex = (currentModalIndex + 1) % projectsData.length;
+            showProjectDetails(projectsData[currentModalIndex]);
         });
 
-        // Close modal when clicking outside content
+        /**
+         * Modal Close Handlers
+         * Methods to close the modal and restore page scrolling
+         */
+        // Close button click
+        modalClose.addEventListener('click', function() {
+            closeModal();
+        });
+
+        // Close when clicking outside modal content
         window.addEventListener('click', function(event) {
             if (event.target === modal) {
-                modal.style.display = 'none';
-                document.body.style.overflow = 'auto'; // Re-enable scrolling
+                closeModal();
             }
         });
-
-        // Show project details in modal
-        function showProjectDetails(project, index) {
-            // Set modal title
-            document.getElementById('modalTitle').textContent = project.title;
-
-            // Build details HTML
-            let detailsHTML = `
-            <p class="project-description">${project.description}</p>
-            
-            <div class="detail-section">
-                <h4 class="detail-section-title">Challenge</h4>
-                <p class="detail-section-content">${project.challenge || 'No challenge information available.'}</p>
-            </div>
-            
-            <div class="detail-section">
-                <h4 class="detail-section-title">Solution</h4>
-                <p class="detail-section-content">${project.solution || 'No solution information available.'}</p>
-            </div>
-            
-            <div class="detail-section">
-                <h4 class="detail-section-title">Results</h4>
-                <p class="detail-section-content">${project.result || 'No results information available.'}</p>
-                
-                ${project.metrics && project.metrics.length ? `
-                    <div class="d-flex flex-wrap justify-content-between mt-3">
-                        ${project.metrics.map(metric => `
-                            <div class="mb-2">
-                                <div class="result-metric">${metric}</div>
-                            </div>
-                        `).join('')}
-                    </div>
-                ` : ''}
-            </div>
-        `;
-
-            // Update project details
-            projectDetails.innerHTML = detailsHTML;
-
-            // Build media HTML
-            let mediaHTML = '';
-            if (project.media && project.media.length) {
-                project.media.forEach(media => {
-                    if (typeof media === 'string') {
-                        // Determine if it's a video or image based on extension
-                        if (media.match(/\.(mp4|webm|ogg)$/i)) {
-                            mediaHTML += `
-                            <video controls>
-                                <source src="${media}" type="video/${media.split('.').pop()}">
-                                Your browser does not support the video tag.
-                            </video>
-                        `;
-                        } else {
-                            mediaHTML += `<img src="${media}" alt="${project.title}" loading="lazy">`;
-                        }
-                    }
-                });
-            } else {
-                // Fallback if no media
-                mediaHTML = `<img src="${project.image}" alt="${project.title}" loading="lazy">`;
+        
+        // ESC key to close modal
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && modal.style.display === 'flex') {
+                closeModal();
             }
+            // Left/Right arrow keys for navigation
+            if (modal.style.display === 'flex') {
+                if (event.key === 'ArrowLeft') {
+                    modalPrev.click();
+                } else if (event.key === 'ArrowRight') {
+                    modalNext.click();
+                }
+            }
+        });
+        
+        /**
+         * Close the project modal and restore page scrolling
+         */
+        function closeModal() {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Re-enable page scrolling
+        }
 
-            // Update media list
-            projectMedia.innerHTML = mediaHTML;
+        /**
+         * Displays project details in the modal
+         * 
+         * @param {Object} project - The project data object to display
+         */
+        function showProjectDetails(project) {
+            // Apply transition effect
+            projectDetails.style.opacity = '0';
+            projectMedia.style.opacity = '0';
+            
+            // Short timeout for smooth transition
+            setTimeout(() => {
+                // Update modal title
+                modalTitle.textContent = project.title;
+    
+                // Build details HTML with sections for challenge, solution, and results
+                let detailsHTML = `
+                    <p class="project-description">${project.description}</p>
+                    
+                    <!-- Challenge Section -->
+                    <div class="detail-section">
+                        <h4 class="detail-section-title">Challenge</h4>
+                        <p class="detail-section-content">${project.challenge || 'No challenge information available.'}</p>
+                    </div>
+                    
+                    <!-- Solution Section -->
+                    <div class="detail-section">
+                        <h4 class="detail-section-title">Solution</h4>
+                        <p class="detail-section-content">${project.solution || 'No solution information available.'}</p>
+                    </div>
+                    
+                    <!-- Results Section with Metrics -->
+                    <div class="detail-section">
+                        <h4 class="detail-section-title">Results</h4>
+                        <p class="detail-section-content">${project.result || 'No results information available.'}</p>
+                        
+                        ${project.metrics && project.metrics.length ? `
+                            <div class="d-flex flex-wrap justify-content-between mt-3">
+                                ${project.metrics.map(metric => `
+                                    <div class="mb-2">
+                                        <div class="result-metric">${metric}</div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        ` : ''}
+                    </div>
+                `;
+    
+                // Update project details content
+                projectDetails.innerHTML = detailsHTML;
+    
+                // Build media gallery HTML
+                let mediaHTML = '';
+                
+                // Process media array if it exists
+                if (project.media && project.media.length) {
+                    project.media.forEach(media => {
+                        if (typeof media === 'string') {
+                            // Determine if media is video or image based on file extension
+                            if (media.match(/\.(mp4|webm|ogg)$/i)) {
+                                mediaHTML += `
+                                    <video controls>
+                                        <source src="${media}" type="video/${media.split('.').pop()}">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                `;
+                            } else {
+                                mediaHTML += `<img src="${media}" alt="${project.title}" loading="lazy">`;
+                            }
+                        }
+                    });
+                } else {
+                    // Fallback if no media array is present
+                    mediaHTML = `<img src="${project.image}" alt="${project.title}" loading="lazy">`;
+                }
+    
+                // Update media gallery content
+                projectMedia.innerHTML = mediaHTML;
+                
+                // Fade elements back in
+                projectDetails.style.opacity = '1';
+                projectMedia.style.opacity = '1';
+            }, 200);
 
-            // Show modal
+            // Display the modal
             modal.style.display = 'flex';
             document.body.style.overflow = 'hidden'; // Prevent scrolling behind modal
         }
