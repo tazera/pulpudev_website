@@ -20,6 +20,7 @@ init(basename($_SERVER['PHP_SELF']), $default_theme);
 <body class='bg-black'>
     <?php require_once("{$_SERVER['DOCUMENT_ROOT']}/components/background_animation/animation.php"); ?>
     <?php require_once("{$_SERVER['DOCUMENT_ROOT']}/pages/global_modules/m_navbar.php"); ?>
+    <!-- Bug fix for content starting from the top it ignores the navbar -->
     <div class="content" style="padding-top:70px;"></div>
     <?php require_once("{$_SERVER['DOCUMENT_ROOT']}/components/introduction/introduction.php");
     require_once("{$_SERVER['DOCUMENT_ROOT']}/components/layered_image_view/layered_image_view.php");
@@ -34,7 +35,7 @@ init(basename($_SERVER['PHP_SELF']), $default_theme);
     <!-- Smooth Scroll Script needs to be moved later -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const btn = document.querySelector('a[href="#services-button-go-to"]');
+            const btn = document.querySelector('a[href="/pages/home/home.php#services-button-go-to"]');
             if (btn) {
                 btn.addEventListener('click', function(e) {
                     const target = document.getElementById('services-button-go-to');

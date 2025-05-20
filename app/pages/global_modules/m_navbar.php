@@ -2,6 +2,7 @@
 $logo = [
 	'image-path' => '/images/logo.png',
 	'alt' => 'Company Logo',
+	'companyName' => 'PulpuDEV',
 	'href' => '/pages/home/home.php',
 	'height-in-px' => '50',
 	'border-radius' => '10px',

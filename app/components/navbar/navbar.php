@@ -25,7 +25,7 @@
 		<a class='navbar-brand d-flex align-items-center' href="<?php echo $logo['href']; ?>">
 			<img src="<?php echo $logo['image-path']; ?>" alt="<?php echo $logo['alt']; ?>" width="50" height="50"
 				style="height: <?php echo $logo['height-in-px']; ?>px; border-radius: <?php echo $logo['border-radius']; ?>; border: <?php echo $logo['border']; ?>;">
-			<span style="margin-left: 10px; font-weight: bold;">PulpuDev</span>
+			<span style="margin-left: 10px; font-weight: bold;"><?php echo $logo['companyName']; ?></span>
 		</a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
 			aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
