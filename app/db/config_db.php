@@ -143,6 +143,14 @@ $phrases = [
 		]
 	],
 	[
+		'KEY' => 'h2-services',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'List of our services:'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Списък с нашите услуги:'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Liste unserer Dienstleistungen:'],
+		]
+	],
+	[
 		'KEY' => 'services1',
 		'TRANSLATIONS' => [
 			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Website Design & Development'],
@@ -164,6 +172,54 @@ $phrases = [
 			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Hardware Maintenance & Support'],
 			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Поддръжка и поддръжка на хардуер'],
 			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Hardwarewartung und -support'],
+		]
+	],
+	[
+		'KEY' => 'services3',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Hardware Maintenance & Support'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Поддръжка и поддръжка на хардуер'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Hardwarewartung und -support'],
+		]
+	],
+	[
+		'KEY' => 'services-box-title1',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Full-Cycle Digital Solutions'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Цялостни дигитални решения'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Full-Cycle-Digital-Lösungen'],
+		]
+	],
+	[
+		'KEY' => 'services-box-text1',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Stay informed at every step with transparent timelines, clear milestones, and proactive communication throughout the project lifecycle.'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Бъдете информирани на всяка стъпка с прозрачни срокове, ясни етапи и проактивна комуникация през целия жизнен цикъл на проекта.'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Bleiben Sie bei jedem Schritt informiert mit transparenten Zeitplänen, klaren Meilensteinen und proaktiver Kommunikation während des gesamten Projektlebenszyklus.'],
+		]
+	],
+	[
+		'KEY' => 'services-box-title2',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Real-Time Project Tracking'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Проследяване на проекта в реално време'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Echtzeit-Projektverfolgung'],
+		]
+	],
+	[
+		'KEY' => 'services-box-text2',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Choosing PulpuDEV means full visibility into your project’s progress at every stage. Our collaborative platform allows you to monitor real-time updates, track task statuses'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Изборът на PulpuDEV означава пълна видимост за напредъка на вашия проект на всеки етап. Нашата съвместна платформа ви позволява да наблюдавате актуализации в реално време'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Die Wahl von PulpuDEV bedeutet volle Sichtbarkeit des Fortschritts Ihres Projekts in jeder Phase.'],
+		]
+	],
+	[
+		'KEY' => 'services-website-building-h2',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Website Building'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Изграждане на уебсайтове'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Webseitenbau'],
 		]
 	],
 

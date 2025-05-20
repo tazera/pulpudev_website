@@ -50,7 +50,7 @@
         }
 
         .bottom-card-title {
-            font-size: 2.2rem;
+            font-size: 1.5rem;
             font-weight: 700;
         }
 
@@ -67,9 +67,10 @@
 
         .bottom-card-content {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             margin-left: 40px;
-            /* Move text closer to image */
+            padding-top: 10px;
+            /* Adjusted to align to the top */
         }
 
         /* Enhanced responsiveness for bottom card image */
@@ -134,7 +135,7 @@
         .rotary-buttons {
             display: flex;
             flex-direction: column;
-            gap: 18px;
+            gap: 15px;
             margin-right: 32px;
             width: max-content;
         }
@@ -272,10 +273,9 @@
                 <div class="col-12 col-lg-6 d-flex">
                     <div class="card flex-row align-items-center top-card w-100">
                         <div class="flex-grow-1">
-                            <h3 id="manage-projects-end-to-end" class="top-card-title mb-3">Manage projects end-to-end
+                            <h3 id="manage-projects-end-to-end" class="top-card-title mb-3"><?php echo $_SESSION['phrases']['services-box-title1'] ?>
                             </h3>
-                            <p class="mb-0 top-card-text">Consolidate specs, milestones, tasks, and other documentation
-                                in one centralized location.</p>
+                            <p class="mb-0 top-card-text"><?php echo $_SESSION['phrases']['services-box-text1'] ?></p>
                         </div>
                         <img src="/images/screenshot.png" alt="Specs" width="400" height="220" class="card-img-right d-none d-md-block" />
                     </div>
@@ -283,9 +283,8 @@
                 <div class="col-12 col-lg-6 d-flex">
                     <div class="card flex-row align-items-center top-card w-100">
                         <div class="flex-grow-1">
-                            <h3 class="top-card-title mb-3">Project updates</h3>
-                            <p class="mb-0 top-card-text">Communicate progress and project health with built-in project
-                                updates.</p>
+                            <h3 class="top-card-title mb-3"><?php echo $_SESSION['phrases']['services-box-title2'] ?></h3>
+                            <p class="mb-0 top-card-text"><?php echo $_SESSION['phrases']['services-box-text2'] ?></p>
                         </div>
                         <img src="/images/screenshot.png" alt="Updates" width="400" height="220" class="card-img-right d-none d-md-block" />
                     </div>
@@ -296,9 +295,10 @@
                 <div class="col-md-6 order-1 order-md-1">
                     <div class="bottom-card-content">
                         <div class="rotary-buttons-wrapper">
-                            <h2 style="margin-bottom: 20px; font-size: 1.8rem; font-weight: 700; color: #F7F8F8;">List of our services:</h2>
+                            <!-- needs to take out the css not to be inline fix for now -->
+                            <h2 style="margin-bottom: 15px; font-size: 1.8rem; font-weight: 700; color: #F7F8F8; "><?php echo $_SESSION['phrases']['h2-services'] ?></h2>
                             <div class="rotary-buttons">
-                                <div class="rotary-btn-row" data-title="Collaborative documents" data-description="Work together in real-time with your team on documents and specifications. Everyone stays on the same page with synchronized editing.">
+                                <div class="rotary-btn-row" data-title=<?php echo $_SESSION['phrases']['services-website-building-h2'] ?> data-description="Work together in real-time with your team on documents and specifications. Everyone stays on the same page with synchronized editing.">
                                     <a href="#" class="rotary-btn-label-link" aria-label="Collaborative documents">
                                         <span class="rotary-btn"><span class="vertical-line"></span></span>
                                         <?php echo $_SESSION['phrases']['services1'] ?>
@@ -319,15 +319,15 @@
                             </div>
                             <div class="rotary-buttons-separator"></div>
                         </div>
-                        <div id="rotary-content">
-                            <h3 id="content-title" class="bottom-card-title mb-3">Project and long-term planning</h3>
+                        <!-- The template that is populated with data-title and data-description from above need refactor in the future -->
+                        <div id="rotary-content" style="margin-top: -5px;">
+                            <h3 id="content-title" class="bottom-card-title mb-3"></h3>
                             <p id="content-description" class="bottom-card-text">
-                                Align your team around a unified product timeline. Plan, manage, and track all product
-                                initiatives with visual planning tools inspired by Linear.
+
                             </p>
                             <a href="https://linear.app/" target="_blank" rel="noopener noreferrer"
                                 style="color:#6EC6F6;">
-                                Learn more at Linear
+
                             </a>
                         </div>
                     </div>
