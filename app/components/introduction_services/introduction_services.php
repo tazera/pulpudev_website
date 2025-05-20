@@ -50,8 +50,13 @@
         }
 
         .bottom-card-title {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 700;
+        }
+
+        /* Make the description text smaller */
+        #content-description.bottom-card-text {
+            font-size: 1.05rem;
         }
 
         .bottom-card-text {
@@ -298,19 +303,19 @@
                             <!-- needs to take out the css not to be inline fix for now -->
                             <h2 style="margin-bottom: 15px; font-size: 1.8rem; font-weight: 700; color: #F7F8F8; "><?php echo $_SESSION['phrases']['h2-services'] ?></h2>
                             <div class="rotary-buttons">
-                                <div class="rotary-btn-row" data-title=<?php echo $_SESSION['phrases']['services-website-building-h2'] ?> data-description="Work together in real-time with your team on documents and specifications. Everyone stays on the same page with synchronized editing.">
+                                <div class="rotary-btn-row" data-title="<?php echo $_SESSION['phrases']['services-website-building-h2'] ?>" data-description="<?php echo $_SESSION['phrases']['services-website-building-p'] ?>">
                                     <a href="#" class="rotary-btn-label-link" aria-label="Collaborative documents">
                                         <span class="rotary-btn"><span class="vertical-line"></span></span>
                                         <?php echo $_SESSION['phrases']['services1'] ?>
                                     </a>
                                 </div>
-                                <div class="rotary-btn-row" data-title="Inline comments" data-description="Add context-specific feedback directly in documents. Discuss ideas, suggest changes, and resolve questions without leaving your workflow.">
+                                <div class="rotary-btn-row" data-title="<?php echo $_SESSION['phrases']['services-b2b-h2'] ?>" data-description="<?php echo $_SESSION['phrases']['services-b2b-text'] ?>">
                                     <a href="#" class="rotary-btn-label-link" aria-label="Inline comments">
                                         <span class="rotary-btn"><span class="vertical-line"></span></span>
                                         <?php echo $_SESSION['phrases']['services2'] ?>
                                     </a>
                                 </div>
-                                <div class="rotary-btn-row" data-title="Text-to-issue commands" data-description="Convert any text into actionable tasks with simple commands. Create, assign, and track issues without disrupting your documentation process.">
+                                <div class="rotary-btn-row" data-title="<?php echo $_SESSION['phrases']['services-hardware-h2'] ?>" data-description="<?php echo $_SESSION['phrases']['services-hardware-text'] ?>">
                                     <a href="#" class="rotary-btn-label-link" aria-label="Text-to-issue commands">
                                         <span class="rotary-btn"><span class="vertical-line"></span></span>
                                         <?php echo $_SESSION['phrases']['services3'] ?>

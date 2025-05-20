@@ -14,9 +14,9 @@ $display_projects = isset($customProjects) && is_array($customProjects) && !empt
     ? $customProjects
     : [
         [
-            'image' => '/images/projects/project1.png',
-            'tags' => ['Web App', 'SaaS'],
-            'title' => 'Enterprise Task Management System',
+            'image' => '/images/projects/plamen1.jpg',
+            'tags' => ['Desktop App', 'SaaS'],
+            'title' =>  $_SESSION['phrases']['projects1-h2'],
             'description' => 'A comprehensive task management platform for enterprise teams with real-time collaboration features.',
             'challenge' => 'The client needed to unify their task management across 12 departments with varying workflows and compliance requirements.',
             'solution' => 'We developed a flexible system with customizable workflows, role-based permissions, and detailed audit logs for compliance tracking.',
@@ -25,8 +25,8 @@ $display_projects = isset($customProjects) && is_array($customProjects) && !empt
             'media' => ['/images/projects/project1.png', '/images/projects/project1.png']
         ],
         [
-            'image' => '/images/projects/project1.png',
-            'tags' => ['Mobile', 'E-commerce'],
+            'image' => '/images/projects/laki.png',
+            'tags' => ['WebSite', 'E-commerce', 'Web App'],
             'title' => 'Retail Mobile Shopping Experience',
             'description' => 'A sleek mobile application for a retail chain enabling personalized shopping experiences.',
             'challenge' => 'The retail chain was losing market share to competitors with better digital presence and needed a mobile-first approach.',
@@ -57,9 +57,8 @@ $featured_projects = array_slice($display_projects, 0, min(3, count($display_pro
 <section class="projects-section" id="projects">
     <div class="container">
         <div class="text-center mb-5">
-            <h2 class="section-title">Our Work</h2>
-            <p class="section-subtitle mx-auto">We've partnered with ambitious companies to build products that make a difference.
-                Here are some of our recent projects and the results they've achieved.</p>
+            <h2 class="section-title"><?php echo $_SESSION['phrases']['projects-h1']; ?></h2>
+            <p class="section-subtitle mx-auto"><?php echo $_SESSION['phrases']['projects-h2-text']; ?></p>
         </div>
 
         <!-- Featured Projects Carousel -->

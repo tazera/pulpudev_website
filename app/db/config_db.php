@@ -222,6 +222,71 @@ $phrases = [
 			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Webseitenbau'],
 		]
 	],
+	[
+		'KEY' => 'services-website-building-p',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'We build modern, responsive websites tailored to your business goals. From clean landing pages to complex web platforms, our solutions are fast, secure, and fully optimized for all devices. Every site we create is designed for performance, scalability, and a seamless user experience.'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Изграждаме модерни, отзивчиви уебсайтове, съобразени с бизнес целите ви. От чисти целеви страници до сложни уеб платформи, нашите решения са бързи, сигурни и напълно оптимизирани за всички устройства. '],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Wir erstellen moderne, responsive Websites, die auf Ihre Geschäftsziele zugeschnitten sind. Von klaren Landing Pages bis hin zu komplexen Webplattformen sind unsere Lösungen schnell, sicher und vollständig für alle Geräte optimiert.'],
+		]
+	],
+	[
+		'KEY' => 'services-b2b-h2',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'B2B Solutions'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'B2B решения'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'B2B-Lösungen'],
+		]
+	],
+	[
+		'KEY' => 'services-b2b-text',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'We provide tailored B2B digital solutions that help streamline operations and improve collaboration between partners. Our platforms are built for scalability, security, and long-term growth. '],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Предоставяме персонализирани B2B цифрови решения, които помагат за оптимизиране на операциите и подобряване на сътрудничеството между партньорите. Нашите платформи са изградени за мащабируемост, сигурност и дългосрочен растеж. '],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Wir bieten maßgeschneiderte B2B-Digitallösungen, die helfen, Abläufe zu optimieren und die Zusammenarbeit zwischen Partnern zu verbessern.'],
+		]
+	],
+	[
+		'KEY' => 'services-hardware-h2',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Hardware Maintenance & Support'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Поддръжка и поддръжка на хардуер'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Hardwarewartung und -support'],
+		]
+	],
+	[
+		'KEY' => 'services-hardware-text',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'We offer reliable hardware maintenance and technical support to keep your systems running smoothly. Our team ensures timely diagnostics, repairs, and component replacements when needed. '],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Предлагаме надеждна поддръжка на хардуер и техническа поддръжка, за да поддържате системите си в добро състояние. Нашият екип осигурява навременна диагностика, ремонти и подмяна на компоненти при необходимост.'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Wir bieten zuverlässige Hardwarewartung und technischen Support, um Ihre Systeme reibungslos am Laufen zu halten.'],
+		]
+	],
+	[
+		'KEY' => 'projects-h1',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Our Products'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Нашите продукти'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Unsere Produkte'],
+		]
+	],
+	[
+		'KEY' => 'projects-h2-text',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Explore our range of products designed to meet your needs. From cutting-edge software solutions to reliable hardware, we have everything you need to succeed.'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Разгледайте нашата гама от продукти, проектирани да отговорят на вашите нужди. От иновационни софтуерни решения до надежден хардуер, ние имаме всичко необходимо за вашия успех.'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Entdecken Sie unser Sortiment an Produkten, die auf Ihre Bedürfnisse zugeschnitten sind. Von innovativen Softwarelösungen bis hin zu zuverlässiger Hardware haben wir alles, was Sie für Ihren Erfolg benötigen.'],
+		]
+	],
+	[
+		'KEY' => 'projects1-h2',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Enterprise Shop Management System'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Система за управление на корпоративен магазин'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Enterprise-Shop-Management-System'],
+		]
+	],
+
 
 
 ];
