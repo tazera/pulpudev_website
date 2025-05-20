@@ -258,13 +258,12 @@
 
 <body>
 
-    <section class="section-padding">
+    <section class="section-padding" id="services-button-go-to">
 
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class="section-title" id="services">Our Services</h2>
-                <p class="section-subtitle mx-auto">We've partnered with ambitious companies to build products that make a difference.
-                    Here are some of our recent projects and the results they've achieved.</p>
+                <h2 class="section-title" id="services"><?php echo $_SESSION['phrases']['services-title'] ?></h2>
+                <p class="section-subtitle mx-auto"><?php echo $_SESSION['phrases']['services-subtitle'] ?></p>
             </div>
         </div>
         <div class="container">
@@ -297,23 +296,24 @@
                 <div class="col-md-6 order-1 order-md-1">
                     <div class="bottom-card-content">
                         <div class="rotary-buttons-wrapper">
+                            <h2 style="margin-bottom: 20px; font-size: 1.8rem; font-weight: 700; color: #F7F8F8;">List of our services:</h2>
                             <div class="rotary-buttons">
                                 <div class="rotary-btn-row" data-title="Collaborative documents" data-description="Work together in real-time with your team on documents and specifications. Everyone stays on the same page with synchronized editing.">
                                     <a href="#" class="rotary-btn-label-link" aria-label="Collaborative documents">
                                         <span class="rotary-btn"><span class="vertical-line"></span></span>
-                                        Collaborative documents
+                                        <?php echo $_SESSION['phrases']['services1'] ?>
                                     </a>
                                 </div>
                                 <div class="rotary-btn-row" data-title="Inline comments" data-description="Add context-specific feedback directly in documents. Discuss ideas, suggest changes, and resolve questions without leaving your workflow.">
                                     <a href="#" class="rotary-btn-label-link" aria-label="Inline comments">
                                         <span class="rotary-btn"><span class="vertical-line"></span></span>
-                                        Inline comments
+                                        <?php echo $_SESSION['phrases']['services2'] ?>
                                     </a>
                                 </div>
                                 <div class="rotary-btn-row" data-title="Text-to-issue commands" data-description="Convert any text into actionable tasks with simple commands. Create, assign, and track issues without disrupting your documentation process.">
                                     <a href="#" class="rotary-btn-label-link" aria-label="Text-to-issue commands">
                                         <span class="rotary-btn"><span class="vertical-line"></span></span>
-                                        Text-to-issue commands
+                                        <?php echo $_SESSION['phrases']['services3'] ?>
                                     </a>
                                 </div>
                             </div>

@@ -30,6 +30,23 @@ init(basename($_SERVER['PHP_SELF']), $default_theme);
 
     <?php require_once("{$_SERVER['DOCUMENT_ROOT']}/bootstrap/bootstrap_body.php"); ?>
 
+    <!-- Smooth Scroll Script needs to be moved later -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const btn = document.querySelector('a[href="#services-button-go-to"]');
+            if (btn) {
+                btn.addEventListener('click', function(e) {
+                    const target = document.getElementById('services-button-go-to');
+                    if (target) {
+                        e.preventDefault();
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>
