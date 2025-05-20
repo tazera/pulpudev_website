@@ -434,3 +434,33 @@
     right: -40px; /* Keep arrows close to the modal edge */
   }
 }
+
+.project-modal .modal-content {
+  overflow: visible !important; /* override hidden */
+}
+
+/* 2. Ensure modal-nav arrows are visible and positioned at the sides */
+.modal-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1100; /* above other modal elements */
+}
+
+/* 3. Position previous/next arrows just outside the modal box */
+.modal-prev {
+  left: -70px; /* adjust distance from modal edge */
+}
+.modal-next {
+  right: -70px;
+}
+
+/* 4. On smaller screens, bring arrows inside */
+@media (max-width: 992px) {
+  .modal-prev {
+    left: 10px;
+  }
+  .modal-next {
+    right: 10px;
+  }
+}
