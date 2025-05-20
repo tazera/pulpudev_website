@@ -12,13 +12,13 @@ $anchors = [
 	// 	'phrase' => $_SESSION['phrases']['navbar-news'],
 	// 	'href' => '/pages/news/news.php'
 	// ],
-	[
-		'phrase' => $_SESSION['phrases']['navbar-about-us'],
-		'href' => '/pages/about_us/about_us.php'
-	],
+	// [
+	// 	'phrase' => $_SESSION['phrases']['navbar-about-us'],
+	// 	'href' => '/pages/about_us/about_us.php'
+	// ],
 	[
 		'phrase' => $_SESSION['phrases']['navbar-design'],
-		'href' => '/pages/powdercoating/powdercoating.php',
+		'href' => '#projects',
 		// 'highlight-color' => 'orange'
 	],
 	[
@@ -27,17 +27,17 @@ $anchors = [
 		'dropdown-anchors' => [
 			[
 				'phrase' => $_SESSION['phrases']['navbar-services-website-building'],
-				'href' => '/pages/powdercoating/powdercoating.php'
+				'href' => '#services'
 			],
 			[
 				'phrase' => $_SESSION['phrases']['navbar-services-hardware-maintenance'],
-				'href' => '/pages/diecasting/diecasting.php'
+				'href' => '#services'
 			],
 		]
 	],
 	[
 		'phrase' => $_SESSION['phrases']['navbar-contacts'],
-		'href' => '/pages/contact_us/contact_us.php'
+		'href' => '#contact'
 	]
 ];
 $font_size = '18px';

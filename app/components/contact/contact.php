@@ -10,7 +10,7 @@
                     <div class="row">
                         <div class="col-lg-5">
                             <div class="contact-info mb-5 mb-lg-0">
-                                <h2 class="contact-title">Contact us</h2>
+                                <h2 class="contact-title" id="contact">Contact us</h2>
                                 <p class="contact-description">Get in touch with our team to discuss your project requirements or learn more about our services.</p>
                                 <div class="contact-details mt-4">
                                     <div class="contact-detail-item">
