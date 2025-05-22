@@ -11,8 +11,10 @@
             min-height: 100%;
             background: #000023;
             color: #fff;
-            font-family: system-ui, sans-serif
-        }        #background {
+            font-family: system-ui, sans-serif;
+        }
+
+        #background {
             position: fixed;
             top: 0;
             left: 0;
@@ -25,20 +27,21 @@
     </style>
 </head>
 
-<body>    <canvas id="background"></canvas>
+<body>
+    <canvas id="background"></canvas>
     <!-- All page content will go here and appear above the background -->
     <div id="content-wrapper" style="position: relative; z-index: 10;">
         <!-- Your page content goes here -->
     </div>
     <script>
         /*
-  Starfield rewritten for speed:
-  – one flat O(N) loop per frame (no nested loops)
-  – star graphics pre‑rendered to off‑screen canvas (Path2D drawn once)
-  – no expensive ctx.filter/blur; glow via lighter compositing
-  – wrap‑around edges (cheaper than bounce)
-  – respects devicePixelRatio for crispness without large canvases
-*/
+          Starfield rewritten for speed:
+          – one flat O(N) loop per frame (no nested loops)
+          – star graphics pre‑rendered to off‑screen canvas (Path2D drawn once)
+          – no expensive ctx.filter/blur; glow via lighter compositing
+          – wrap‑around edges (cheaper than bounce)
+          – respects devicePixelRatio for crispness without large canvases
+        */
         (() => {
             const cvs = document.getElementById('background');
             const ctx = cvs.getContext('2d');
@@ -86,6 +89,7 @@
             sCtx.fill(PATH);
 
             const rand = (a, b) => Math.random() * (b - a) + a;
+
             const stars = Array.from({
                 length: NUM
             }, () => ({
@@ -98,28 +102,53 @@
                 ts: rand(0.8, 2.5) // twinkle speed
             }));
 
+            /* ------------------------------
+               helper: give a star a new random
+               position and velocity (called when
+               the tab becomes visible again)
+            ---------------------------------- */
+            function resetStar(s, w, h) {
+                s.x = rand(0, w);
+                s.y = rand(0, h);
+                s.dx = rand(-1, 1) * rand(SPEED_MIN, SPEED_MAX);
+                s.dy = rand(-1, 1) * rand(SPEED_MIN, SPEED_MAX);
+            }
+
             let last = performance.now();
+
+            // When the tab is shown again, re‑randomise every star
+            document.addEventListener('visibilitychange', () => {
+                if (document.visibilityState === 'visible') {
+                    const w = innerWidth;
+                    const h = innerHeight;
+                    for (const s of stars) resetStar(s, w, h);
+                    last = performance.now(); // avoid a huge dt on first frame back
+                }
+            });
 
             function frame(now) {
                 const dt = now - last;
                 last = now;
+
                 ctx.clearRect(0, 0, innerWidth, innerHeight);
-                ctx.globalCompositeOperation = 'lighter';                for (let i = 0; i < NUM; i++) {
+                ctx.globalCompositeOperation = 'lighter';
+
+                for (let i = 0; i < NUM; i++) {
                     const s = stars[i];
+
                     // move (wrap edges) with safeguards against cornering
                     s.x += s.dx * dt * 0.06;
                     s.y += s.dy * dt * 0.06;
-                    
+
                     // Improved edge wrapping
                     if (s.x < -s.r) {
                         s.x = innerWidth + s.r;
-                        // Avoid particles getting stuck at edges
                         if (Math.abs(s.dx) < 0.1) s.dx = rand(0.3, SPEED_MAX) * (s.dx < 0 ? -1 : 1);
                     } else if (s.x > innerWidth + s.r) {
                         s.x = -s.r;
                         if (Math.abs(s.dx) < 0.1) s.dx = rand(0.3, SPEED_MAX) * (s.dx < 0 ? -1 : 1);
                     }
-                    
+
                     if (s.y < -s.r) {
                         s.y = innerHeight + s.r;
                         if (Math.abs(s.dy) < 0.1) s.dy = rand(0.3, SPEED_MAX) * (s.dy < 0 ? -1 : 1);
@@ -127,7 +156,7 @@
                         s.y = -s.r;
                         if (Math.abs(s.dy) < 0.1) s.dy = rand(0.3, SPEED_MAX) * (s.dy < 0 ? -1 : 1);
                     }
-                    
+
                     // draw with twinkle
                     ctx.globalAlpha = 0.5 + 0.5 * Math.sin(now * 0.001 * s.ts + s.tw);
                     const sz = s.r * 4;
