@@ -3,13 +3,11 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>Starry Particles – fast v7</title>
-    <style>
+    <title>Starry Particles – fast v7</title>    <style>
         html,
         body {
             margin: 0;
-            height: 100%;
-            overflow: hidden;
+            min-height: 100%;
             background: #000023;
             color: #fff;
             font-family: system-ui, sans-serif
@@ -17,10 +15,13 @@
 
         #background {
             position: fixed;
-            inset: 0;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            pointer-events: none
+            pointer-events: none;
+            z-index: 0;
+            display: block;
         }
     </style>
 </head>
@@ -39,11 +40,11 @@
         (() => {
             const cvs = document.getElementById('background');
             const ctx = cvs.getContext('2d');
-            const DPR = window.devicePixelRatio || 1;
-
-            function resize() {
+            const DPR = window.devicePixelRatio || 1;            function resize() {
                 cvs.width = innerWidth * DPR;
                 cvs.height = innerHeight * DPR;
+                cvs.style.width = innerWidth + 'px';
+                cvs.style.height = innerHeight + 'px';
                 ctx.setTransform(DPR, 0, 0, DPR, 0, 0); // reset + scale
             }
             addEventListener('resize', resize, {
