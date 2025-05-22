@@ -18,7 +18,7 @@ init(basename($_SERVER['PHP_SELF']), $default_theme);
 </head>
 
 <body class='bg-black'>
-
+    <?php require_once("{$_SERVER['DOCUMENT_ROOT']}/components/background_animation/starry_background.php"); ?>
     <?php require_once("{$_SERVER['DOCUMENT_ROOT']}/components/background_animation/animation.php"); ?>
     <?php require_once("{$_SERVER['DOCUMENT_ROOT']}/pages/global_modules/m_navbar.php"); ?>
 

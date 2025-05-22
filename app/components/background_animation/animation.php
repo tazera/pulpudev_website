@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>Starry Particles – fast v7</title>    <style>
+    <title>Starry Particles – fast v7</title>
+    <style>
         html,
         body {
             margin: 0;
@@ -11,9 +12,7 @@
             background: #000023;
             color: #fff;
             font-family: system-ui, sans-serif
-        }
-
-        #background {
+        }        #background {
             position: fixed;
             top: 0;
             left: 0;
@@ -26,8 +25,11 @@
     </style>
 </head>
 
-<body>
-    <canvas id="background"></canvas>
+<body>    <canvas id="background"></canvas>
+    <!-- All page content will go here and appear above the background -->
+    <div id="content-wrapper" style="position: relative; z-index: 10;">
+        <!-- Your page content goes here -->
+    </div>
     <script>
         /*
   Starfield rewritten for speed:
@@ -40,7 +42,9 @@
         (() => {
             const cvs = document.getElementById('background');
             const ctx = cvs.getContext('2d');
-            const DPR = window.devicePixelRatio || 1;            function resize() {
+            const DPR = window.devicePixelRatio || 1;
+
+            function resize() {
                 cvs.width = innerWidth * DPR;
                 cvs.height = innerHeight * DPR;
                 cvs.style.width = innerWidth + 'px';
@@ -100,17 +104,30 @@
                 const dt = now - last;
                 last = now;
                 ctx.clearRect(0, 0, innerWidth, innerHeight);
-                ctx.globalCompositeOperation = 'lighter';
-
-                for (let i = 0; i < NUM; i++) {
+                ctx.globalCompositeOperation = 'lighter';                for (let i = 0; i < NUM; i++) {
                     const s = stars[i];
-                    // move (wrap edges)
+                    // move (wrap edges) with safeguards against cornering
                     s.x += s.dx * dt * 0.06;
                     s.y += s.dy * dt * 0.06;
-                    if (s.x < -s.r) s.x = innerWidth + s.r;
-                    else if (s.x > innerWidth + s.r) s.x = -s.r;
-                    if (s.y < -s.r) s.y = innerHeight + s.r;
-                    else if (s.y > innerHeight + s.r) s.y = -s.r;
+                    
+                    // Improved edge wrapping
+                    if (s.x < -s.r) {
+                        s.x = innerWidth + s.r;
+                        // Avoid particles getting stuck at edges
+                        if (Math.abs(s.dx) < 0.1) s.dx = rand(0.3, SPEED_MAX) * (s.dx < 0 ? -1 : 1);
+                    } else if (s.x > innerWidth + s.r) {
+                        s.x = -s.r;
+                        if (Math.abs(s.dx) < 0.1) s.dx = rand(0.3, SPEED_MAX) * (s.dx < 0 ? -1 : 1);
+                    }
+                    
+                    if (s.y < -s.r) {
+                        s.y = innerHeight + s.r;
+                        if (Math.abs(s.dy) < 0.1) s.dy = rand(0.3, SPEED_MAX) * (s.dy < 0 ? -1 : 1);
+                    } else if (s.y > innerHeight + s.r) {
+                        s.y = -s.r;
+                        if (Math.abs(s.dy) < 0.1) s.dy = rand(0.3, SPEED_MAX) * (s.dy < 0 ? -1 : 1);
+                    }
+                    
                     // draw with twinkle
                     ctx.globalAlpha = 0.5 + 0.5 * Math.sin(now * 0.001 * s.ts + s.tw);
                     const sz = s.r * 4;
