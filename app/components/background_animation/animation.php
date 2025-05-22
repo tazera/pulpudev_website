@@ -3,16 +3,16 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>Starry Particles – v6 Modular & Refactored</title>
+    <title>Starry Particles – fast v7</title>
     <style>
         html,
         body {
             margin: 0;
-            padding: 0;
             height: 100%;
-            overflow-x: hidden;
-            font-family: system-ui, sans-serif;
-            color: white;
+            overflow: hidden;
+            background: #000023;
+            color: #fff;
+            font-family: system-ui, sans-serif
         }
 
         #background {
@@ -20,8 +20,7 @@
             inset: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
-            pointer-events: none;
+            pointer-events: none
         }
     </style>
 </head>
@@ -29,238 +28,100 @@
 <body>
     <canvas id="background"></canvas>
     <script>
-        // == CANVAS SETUP ==
-        const canvas = document.getElementById('background');
-        const ctx = canvas.getContext('2d');
+        /*
+  Starfield rewritten for speed:
+  – one flat O(N) loop per frame (no nested loops)
+  – star graphics pre‑rendered to off‑screen canvas (Path2D drawn once)
+  – no expensive ctx.filter/blur; glow via lighter compositing
+  – wrap‑around edges (cheaper than bounce)
+  – respects devicePixelRatio for crispness without large canvases
+*/
+        (() => {
+            const cvs = document.getElementById('background');
+            const ctx = cvs.getContext('2d');
+            const DPR = window.devicePixelRatio || 1;
 
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
-
-        // == CONFIG ==
-        const CONFIG = {
-            NUM_PARTICLES: 220,
-            BIG_STAR_CHANCE: 0.25,
-            MIN_SPEED: 0.25,
-            MAX_SPEED: 2.5,
-            PARALLAX_MIN: 0.2,
-            PARALLAX_MAX: 1,
-            SHOOT_INTERVAL_MIN: 8000,
-            SHOOT_INTERVAL_MAX: 15000,
-            CONST: {
-                MAX_CONNECTIONS: 3,
-                HOVER_RADIUS: 120,
-                THRESHOLD_SQ: 4000
+            function resize() {
+                cvs.width = innerWidth * DPR;
+                cvs.height = innerHeight * DPR;
+                ctx.setTransform(DPR, 0, 0, DPR, 0, 0); // reset + scale
             }
-        };
-        CONFIG.CELL_SIZE = Math.sqrt(CONFIG.CONST.THRESHOLD_SQ);
+            addEventListener('resize', resize, {
+                passive: true
+            });
+            resize();
 
-        // == UTILS ==
-        const randRange = (min, max) => Math.random() * (max - min) + min;
-        const randVel = () => (Math.random() - 0.5) * 1.2;
+            // CONFIG
+            const NUM = 200; // total stars
+            const SPEED_MIN = 0.3;
+            const SPEED_MAX = 1.8;
+            const R_MIN = 2.5;
+            const R_MAX = 5;
 
-        function distanceSq(a, b) {
-            const dx = a.x - b.x,
-                dy = a.y - b.y;
-            return dx * dx + dy * dy;
-        }
-
-        // == STATE ==
-        let particles = [];
-        const shootingStars = [];
-        let nextShootAt = performance.now() + randRange(CONFIG.SHOOT_INTERVAL_MIN, CONFIG.SHOOT_INTERVAL_MAX);
-
-        // == INITIALIZATION ==
-        function initParticles() {
-            particles = [];
-            for (let i = 0; i < CONFIG.NUM_PARTICLES; i++) {
-                const isBig = Math.random() < CONFIG.BIG_STAR_CHANCE;
-                particles.push({
-                    x: randRange(0, canvas.width),
-                    y: randRange(0, canvas.height),
-                    dx: randVel(),
-                    dy: randVel(),
-                    r: isBig ? randRange(5, 10) : randRange(2.5, 5),
-                    depth: randRange(CONFIG.PARALLAX_MIN, CONFIG.PARALLAX_MAX),
-                    twinkleOffset: Math.random() * Math.PI * 2,
-                    twinkleSpeed: randRange(1, 3),
-                    isBig
-                });
-            }
-        }
-        initParticles();
-
-        // == MOUSE ==
-        const mouse = {
-            x: -Infinity,
-            y: -Infinity
-        };
-        window.addEventListener('mousemove', e => ({
-            x: mouse.x,
-            y: mouse.y
-        } = {
-            x: e.clientX,
-            y: e.clientY
-        }));
-        window.addEventListener('mouseleave', () => ({
-            x: mouse.x,
-            y: mouse.y
-        } = {
-            x: -Infinity,
-            y: -Infinity
-        }));
-
-        // == DRAW HELPERS ==
-        function drawStar(ctx, x, y, r, spikes = 5) {
-            const step = Math.PI / spikes;
-            let rot = -Math.PI / 2;
-            const inner = r * 0.5;
-            ctx.beginPath();
-            for (let i = 0; i < spikes; i++) {
-                ctx.lineTo(x + Math.cos(rot) * r, y + Math.sin(rot) * r);
-                rot += step;
-                ctx.lineTo(x + Math.cos(rot) * inner, y + Math.sin(rot) * inner);
-                rot += step;
-            }
-            ctx.closePath();
-            ctx.fill();
-        }
-
-        // == PHYSICS ==
-        function updateParticles(dt) {
-            particles.forEach(p => {
-                // repulsion
-                const dxm = p.x - mouse.x,
-                    dym = p.y - mouse.y;
-                const distm = Math.hypot(dxm, dym);
-                if (distm < CONFIG.CONST.HOVER_RADIUS) {
-                    const strength = (CONFIG.CONST.HOVER_RADIUS - distm) / CONFIG.CONST.HOVER_RADIUS;
-                    p.dx += dxm / distm * strength * 0.8;
-                    p.dy += dym / distm * strength * 0.8;
+            // pre-render one glowing star
+            const starCache = document.createElement('canvas');
+            const sCtx = starCache.getContext('2d');
+            starCache.width = starCache.height = R_MAX * 4;
+            const PATH = new Path2D();
+            (function buildStar(r = R_MAX, spikes = 5) {
+                let rot = -Math.PI / 2;
+                const step = Math.PI / spikes,
+                    inner = r * 0.45;
+                PATH.moveTo(r, 0);
+                for (let i = 0; i < spikes; i++) {
+                    PATH.lineTo(r * Math.cos(rot), r * Math.sin(rot));
+                    rot += step;
+                    PATH.lineTo(inner * Math.cos(rot), inner * Math.sin(rot));
+                    rot += step;
                 }
-                // move + parallax
-                p.x += p.dx * p.depth;
-                p.y += p.dy * p.depth;
-                // speed clamp
-                const speed = Math.hypot(p.dx, p.dy);
-                if (speed > CONFIG.MAX_SPEED) {
-                    p.dx = p.dx / speed * CONFIG.MAX_SPEED;
-                    p.dy = p.dy / speed * CONFIG.MAX_SPEED;
-                } else if (speed < CONFIG.MIN_SPEED) {
-                    p.dx = p.dx / speed * CONFIG.MIN_SPEED;
-                    p.dy = p.dy / speed * CONFIG.MIN_SPEED;
+                PATH.closePath();
+            })();
+            sCtx.translate(starCache.width / 2, starCache.height / 2);
+            sCtx.fillStyle = "#32a0ff";
+            sCtx.fill(PATH);
+
+            const rand = (a, b) => Math.random() * (b - a) + a;
+            const stars = Array.from({
+                length: NUM
+            }, () => ({
+                x: rand(0, innerWidth),
+                y: rand(0, innerHeight),
+                dx: rand(-1, 1) * rand(SPEED_MIN, SPEED_MAX),
+                dy: rand(-1, 1) * rand(SPEED_MIN, SPEED_MAX),
+                r: rand(R_MIN, R_MAX),
+                tw: rand(0, Math.PI * 2), // twinkle phase
+                ts: rand(0.8, 2.5) // twinkle speed
+            }));
+
+            let last = performance.now();
+
+            function frame(now) {
+                const dt = now - last;
+                last = now;
+                ctx.clearRect(0, 0, innerWidth, innerHeight);
+                ctx.globalCompositeOperation = 'lighter';
+
+                for (let i = 0; i < NUM; i++) {
+                    const s = stars[i];
+                    // move (wrap edges)
+                    s.x += s.dx * dt * 0.06;
+                    s.y += s.dy * dt * 0.06;
+                    if (s.x < -s.r) s.x = innerWidth + s.r;
+                    else if (s.x > innerWidth + s.r) s.x = -s.r;
+                    if (s.y < -s.r) s.y = innerHeight + s.r;
+                    else if (s.y > innerHeight + s.r) s.y = -s.r;
+                    // draw with twinkle
+                    ctx.globalAlpha = 0.5 + 0.5 * Math.sin(now * 0.001 * s.ts + s.tw);
+                    const sz = s.r * 4;
+                    ctx.drawImage(starCache, s.x - sz / 2, s.y - sz / 2, sz, sz);
                 }
-                // bounce
-                if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
-                if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
-            });
-        }
 
-        function spawnShootingStar() {
-            const startX = Math.random() < 0.5 ? randRange(0, canvas.width) : -50;
-            const startY = Math.random() < 0.5 ? -50 : randRange(0, canvas.height);
-            const angle = Math.atan2(canvas.height - startY, canvas.width - startX) + randRange(-0.2, 0.2);
-            shootingStars.push({
-                x: startX,
-                y: startY,
-                dx: Math.cos(angle) * 8,
-                dy: Math.sin(angle) * 8,
-                life: 1000
-            });
-        }
-
-        // == CONSTELLATION DRAWING ==
-        function drawConstellations() {
-            // spatial hash
-            const hover = particles.filter(p => distanceSq(p, mouse) < CONFIG.CONST.HOVER_RADIUS ** 2);
-            const grid = new Map();
-            hover.forEach(p => {
-                const gx = Math.floor(p.x / CONFIG.CELL_SIZE),
-                    gy = Math.floor(p.y / CONFIG.CELL_SIZE);
-                const key = gx + ',' + gy;
-                if (!grid.has(key)) grid.set(key, []);
-                grid.get(key).push(p);
-            });
-            ctx.strokeStyle = 'rgba(80,180,255,0.3)';
-            ctx.lineWidth = 1;
-            hover.forEach(a => {
-                let c = 0;
-                const gx = Math.floor(a.x / CONFIG.CELL_SIZE),
-                    gy = Math.floor(a.y / CONFIG.CELL_SIZE);
-                for (let ox = -1; ox <= 1 && c < CONFIG.CONST.MAX_CONNECTIONS; ox++) {
-                    for (let oy = -1; oy <= 1 && c < CONFIG.CONST.MAX_CONNECTIONS; oy++) {
-                        const cell = grid.get((gx + ox) + ',' + (gy + oy));
-                        if (!cell) continue;
-                        for (const b of cell) {
-                            if (b === a) continue;
-                            if (distanceSq(a, b) < CONFIG.CONST.THRESHOLD_SQ) {
-                                ctx.beginPath();
-                                ctx.moveTo(a.x, a.y);
-                                ctx.lineTo(b.x, b.y);
-                                ctx.stroke();
-                                c++;
-                                if (c >= CONFIG.CONST.MAX_CONNECTIONS) break;
-                            }
-                        }
-                    }
-                }
-            });
-        }
-
-        function drawShootingStars(dt) {
-            ctx.strokeStyle = 'rgba(255,255,255,0.9)';
-            ctx.lineWidth = 2;
-            for (let i = shootingStars.length - 1; i >= 0; i--) {
-                const s = shootingStars[i];
-                s.x += s.dx;
-                s.y += s.dy;
-                s.life -= dt;
-                ctx.beginPath();
-                ctx.moveTo(s.x, s.y);
-                ctx.lineTo(s.x - s.dx * 4, s.y - s.dy * 4);
-                ctx.stroke();
-                if (s.life <= 0 || s.x < -50 || s.x > canvas.width + 50 || s.y < -50 || s.y > canvas.height + 50)
-                    shootingStars.splice(i, 1);
+                ctx.globalAlpha = 1;
+                ctx.globalCompositeOperation = 'source-over';
+                requestAnimationFrame(frame);
             }
-        }
-
-        // == MAIN LOOP ==
-        let lastTime = performance.now();
-
-        function animate(time) {
-            const dt = time - lastTime;
-            lastTime = time;
-            requestAnimationFrame(animate);
-
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = 'rgba(0,0,35,0.25)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            // physics + spawn
-            updateParticles(dt);
-            if (time > nextShootAt) {
-                spawnShootingStar();
-                nextShootAt = time + randRange(CONFIG.SHOOT_INTERVAL_MIN, CONFIG.SHOOT_INTERVAL_MAX);
-            }
-
-            // draw
-            ctx.filter = 'blur(1px)';
-            ctx.fillStyle = 'rgb(50,160,255)';
-            particles.forEach(p => {
-                const base = 0.6 + 0.4 * Math.sin(time / 1000 * p.twinkleSpeed + p.twinkleOffset);
-                ctx.globalAlpha = base * p.depth;
-                drawStar(ctx, p.x, p.y, p.r);
-            });
-            ctx.globalAlpha = 1;
-            ctx.filter = 'none';
-
-            drawConstellations();
-            drawShootingStars(dt);
-        }
-        requestAnimationFrame(animate);
+            requestAnimationFrame(frame);
+        })();
     </script>
 </body>
 
