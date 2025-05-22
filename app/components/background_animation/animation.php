@@ -62,7 +62,7 @@
             // CONFIG
             const NUM = 200; // total stars
             const SPEED_MIN = 0.3;
-            const SPEED_MAX = 1.8;
+            const SPEED_MAX = 1.5;
             const R_MIN = 2.5;
             const R_MAX = 5;
 
