@@ -20,6 +20,7 @@ init(basename($_SERVER['PHP_SELF']), $default_theme);
 <body class='bg-black'>
 
     <?php require_once("{$_SERVER['DOCUMENT_ROOT']}/pages/global_modules/m_navbar.php"); ?>
+    <?php require_once("{$_SERVER['DOCUMENT_ROOT']}/components/background_animation/animation.php"); ?>
     <!-- Bug fix for content starting from the top it ignores the navbar -->
     <div class="content" style="padding-top:70px;"></div>
     <?php require_once("{$_SERVER['DOCUMENT_ROOT']}/components/introduction/introduction.php");
