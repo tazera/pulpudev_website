@@ -265,8 +265,8 @@
         <div class="stack-wrapper">
             <!-- replace these with your real images -->
             <img src="/images/home/image3.webp" class="stack-img img-top" alt="Top">
-            <img src="/images/home/image2.png" class="stack-img img-mid" alt="Middle">
-            <img src="/images/home/image1.png" class="stack-img img-bottom" alt="Bottom">
+            <img src="/images/home/image2.webp" class="stack-img img-mid" alt="Middle">
+            <img src="/images/home/image1.webp" class="stack-img img-bottom" alt="Bottom">
         </div>
     </section>
 

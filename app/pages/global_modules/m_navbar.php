@@ -1,6 +1,6 @@
 <?php
 $logo = [
-	'image-path' => '/images/logo.png',
+	'image-path' => '/images/logo.webp',
 	'alt' => 'Company Logo',
 	'companyName' => 'PulpuDEV',
 	'href' => '/pages/home/home.php',

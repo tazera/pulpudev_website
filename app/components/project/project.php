@@ -14,7 +14,7 @@ $display_projects = isset($customProjects) && is_array($customProjects) && !empt
     ? $customProjects
     : [
         [
-            'image' => '/images/projects/plamen1.jpg',
+            'image' => '/images/projects/plamen1.webp',
             'tags' => ['Desktop App', 'SaaS'],
             'title' =>  $_SESSION['phrases']['projects1-h2'],
             'description' => 'A comprehensive task management platform for enterprise teams with real-time collaboration features.',
@@ -22,10 +22,10 @@ $display_projects = isset($customProjects) && is_array($customProjects) && !empt
             'solution' => 'We developed a flexible system with customizable workflows, role-based permissions, and detailed audit logs for compliance tracking.',
             'result' => 'Reduced task handoff time by 42% and improved cross-department visibility by implementing shared dashboards.',
             'metrics' => ['42% faster handoffs', '87% user adoption'],
-            'media' => ['/images/projects/project1.png', '/images/projects/project1.png']
+            'media' => ['/images/projects/project1.webp', '/images/projects/project1.webp']
         ],
         [
-            'image' => '/images/projects/laki.png',
+            'image' => '/images/projects/laki.webp',
             'tags' => ['WebSite', 'E-commerce', 'Web App'],
             'title' => 'Retail Mobile Shopping Experience',
             'description' => 'A sleek mobile application for a retail chain enabling personalized shopping experiences.',
@@ -33,10 +33,10 @@ $display_projects = isset($customProjects) && is_array($customProjects) && !empt
             'solution' => 'We created a native mobile app with AR product previews, personalized recommendations, and seamless checkout process.',
             'result' => 'The application achieved 230,000 downloads in the first quarter and increased mobile conversions by 28%.',
             'metrics' => ['230K downloads', '28% higher conversion'],
-            'media' => ['/images/projects/project1.png', '/images/projects/project1.png']
+            'media' => ['/images/projects/project1.webp', '/images/projects/project1.webp']
         ],
         [
-            'image' => '/images/projects/project1.png',
+            'image' => '/images/projects/project1.webp',
             'tags' => ['Data Analytics', 'Dashboard'],
             'title' => 'Healthcare Analytics Platform',
             'description' => 'Data visualization and analytics dashboard for healthcare providers tracking patient outcomes.',
@@ -44,7 +44,7 @@ $display_projects = isset($customProjects) && is_array($customProjects) && !empt
             'solution' => 'We built a HIPAA-compliant analytics platform that unified patient data from multiple sources with customizable dashboards.',
             'result' => 'Enabled data-driven decisions that reduced average hospital stay duration by 1.5 days and improved resource allocation.',
             'metrics' => ['1.5 days shorter stays', '$2.4M annual savings'],
-            'media' => ['/images/projects/project1.png', '/images/projects/project1.png']
+            'media' => ['/images/projects/project1.webp', '/images/projects/project1.webp']
         ]
     ];
 

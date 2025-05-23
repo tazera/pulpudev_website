@@ -13,7 +13,7 @@ init(basename($_SERVER['PHP_SELF']), $default_theme);
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php echo "$business_name"; ?></title>
-    <link rel="icon" type="image/png" href="/images/logo.png">
+    <link rel="icon" type="image/png" href="/images/logo.webp" />
     <?php require_once("{$_SERVER['DOCUMENT_ROOT']}/bootstrap/bootstrap_head.php"); ?>
 </head>
 
