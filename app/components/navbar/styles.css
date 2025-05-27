@@ -117,7 +117,7 @@
 }
 
 /* Prevent double arrow in language dropdown */
-.nav-item.dropdown .dropdown-toggle img+ ::after {
+.nav-item.dropdown .dropdown-toggle img + ::after {
   margin-left: 0.3em;
 }
 
@@ -156,19 +156,51 @@
   overflow-x: hidden; /* Disable horizontal scroll */
   right: 0; /* Align dropdown to the right edge of the parent */
   left: auto; /* Prevent it from overflowing to the left */
+  display: block; /* Always display */
   opacity: 0; /* Start hidden */
   visibility: hidden; /* Prevent interaction when hidden */
   transform: translateY(-15px); /* Start slightly above */
-  transition: opacity 0.8s ease, transform 0.8s ease; /* Slower animation */
+  transition: all 0.3s ease; /* Smooth transition */
   border-radius: 1rem !important;
   overflow: hidden;
   margin-top: 0.1rem !important; /* Add more spacing below the navbar */
+  z-index: 1000; /* Ensure it's above other elements */
 }
 
-.nav-item.dropdown:hover .dropdown-menu {
-  display: block; /* Show the dropdown menu on hover */
-  opacity: 1; /* Fully visible */
-  visibility: visible; /* Allow interaction */
-  transform: translateY(0); /* Reset position */
+/* Show the menu when hovering over the parent dropdown */
+.nav-item.dropdown:hover > .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
 
+/* Keep the dropdown visible when hovering over the menu itself */
+.dropdown-menu:hover {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) !important;
+}
+
+/* Special dropdown handling */
+.navbar-nav .dropdown-menu {
+  z-index: 9999; /* Much higher z-index */
+}
+
+/* Add delay before hiding dropdown */
+.nav-item.dropdown:not(:hover) > .dropdown-menu {
+  transition-delay: 0.5s; /* Delay hiding by 500ms */
+}
+
+/* Override any potential interference */
+.nav-item.dropdown .dropdown-menu,
+.navbar .dropdown-menu {
+  display: block !important;
+}
+
+/* Fix any potential animation.php interference */
+.navbar,
+.navbar-nav,
+.dropdown-menu {
+  position: relative;
+  z-index: 100 !important; /* Higher than animation background */
+}
