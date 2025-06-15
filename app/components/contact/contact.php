@@ -21,10 +21,11 @@
                                         <strong>Phone:</strong>
                                         <a href="tel:+11234567890" class="contact-link">+359 87 881 8575</a>
                                     </div>
-                                    <div class="contact-detail-item">
+                                    <!-- For now we don`t have so leave it for later-->
+                                    <!-- <div class="contact-detail-item">
                                         <strong>Address:</strong>
                                         <address class="mb-0">123 Tech Street, Suite 100<br>Silicon Valley, CA 94000</address>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
