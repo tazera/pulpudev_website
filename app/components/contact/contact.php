@@ -15,11 +15,11 @@
                                 <div class="contact-details mt-4">
                                     <div class="contact-detail-item">
                                         <strong>Email:</strong>
-                                        <a href="mailto:info@pulpudev.com" class="contact-link">sales@pulpudev.com</a>
+                                        <a href="mailto:sales@pulpudev.com" class="contact-link">sales@pulpudev.com</a>
                                     </div>
                                     <div class="contact-detail-item">
                                         <strong>Phone:</strong>
-                                        <a href="tel:+11234567890" class="contact-link">+359 87 881 8575</a>
+                                        <a href="tel:+359878818575" class="contact-link">+359 87 881 8575</a>
                                     </div>
                                     <!-- For now we don`t have so leave it for later-->
                                     <!-- <div class="contact-detail-item">
@@ -32,7 +32,7 @@
                         <div class="col-lg-7">
                             <div class="contact-form-container">
                                 <h3 class="mb-4">Send us a message</h3>
-                                <form id="contactForm" action="/submit-contact" method="post" enctype="multipart/form-data">
+                                <form id="contactForm" action="/backend/send_mail.php" method="post" enctype="multipart/form-data">
                                     <div class="row g-3">
                                         <div class="col-md-6">
                                             <div class="form-floating mb-3">
@@ -287,18 +287,18 @@
                 otherReferralContainer.style.display = 'none';
                 otherReferral.removeAttribute('required');
             }
-        });
-
-        // Basic form validation
+        }); // Basic form validation
         const contactForm = document.getElementById('contactForm');
         contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
+            // Client-side validation only - form will submit to server
+            let isValid = true;
 
-            // You can add more validation here
+            // Add any additional validation logic here if needed
 
-            // For demo purposes, show success message
-            alert('Form submitted successfully! In a real implementation, this would be sent to the server.');
-            contactForm.reset();
+            if (!isValid) {
+                e.preventDefault();
+            }
+            // Form will submit normally if valid
         });
     });
 </script>

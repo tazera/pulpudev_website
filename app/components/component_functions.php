@@ -20,3 +20,8 @@ function project($customProjects = null)
 	// Pass customProjects to the scope of the included file
 	require("{$_SERVER['DOCUMENT_ROOT']}/components/project/project.php");
 }
+
+function include_mail_sender()
+{
+	require_once("{$_SERVER['DOCUMENT_ROOT']}/backend/send_mail.php");
+}
