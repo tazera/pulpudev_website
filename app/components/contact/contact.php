@@ -15,11 +15,11 @@
                                 <div class="contact-details mt-4">
                                     <div class="contact-detail-item">
                                         <strong>Email:</strong>
-                                        <a href="mailto:info@pulpudev.com" class="contact-link">info@pulpudev.com</a>
+                                        <a href="mailto:info@pulpudev.com" class="contact-link">sales@pulpudev.com</a>
                                     </div>
                                     <div class="contact-detail-item">
                                         <strong>Phone:</strong>
-                                        <a href="tel:+11234567890" class="contact-link">+1 (123) 456-7890</a>
+                                        <a href="tel:+11234567890" class="contact-link">+359 87 881 8575</a>
                                     </div>
                                     <div class="contact-detail-item">
                                         <strong>Address:</strong>
