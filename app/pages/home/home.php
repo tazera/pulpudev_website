@@ -14,6 +14,16 @@ init(basename($_SERVER['PHP_SELF']), $default_theme);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php echo "$business_name"; ?></title>
     <link rel="icon" type="image/png" href="/images/logo.webp" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JW8DSQVJ45"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'G-JW8DSQVJ45');
+    </script>
     <?php require_once("{$_SERVER['DOCUMENT_ROOT']}/bootstrap/bootstrap_head.php"); ?>
 </head>
 
