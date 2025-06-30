@@ -35,6 +35,7 @@ $languages = [
 ];
 
 $phrases = [
+	// Navbar phrases
 	[
 		'KEY' => 'navbar-news',
 		'TRANSLATIONS' => [
@@ -118,6 +119,8 @@ $phrases = [
 			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Projekt starten'],
 		]
 	],
+
+	// Service phrases
 	[
 		'KEY' => 'services-title',
 		'TRANSLATIONS' => [
@@ -288,5 +291,423 @@ $phrases = [
 	],
 
 
+	// Contact Page Phrases
+	[
+		'KEY' => 'contact-title',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Contact us'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Свържете се с нас'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Kontaktieren Sie uns'],
+		]
+	],
+	[
+		'KEY' => 'contact-description',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Get in touch with our team to discuss your project requirements or learn more about our services.'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Свържете се с нашия екип, за да обсъдите вашите проектни изисквания или да научите повече за нашите услуги.'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Kontaktieren Sie unser Team, um Ihre Projektanforderungen zu besprechen oder mehr über unsere Dienstleistungen zu erfahren.'],
+		]
+	],
+	[
+		'KEY' => 'contact-email',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Email:'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Имейл:'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'E-Mail:'],
+		]
+	],
+	[
+		'KEY' => 'contact-phone',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Phone:'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Телефон:'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Telefon:'],
+		]
+	],
+	[
+		'KEY' => 'contact-send-message',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Send us a message'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Изпратете ни съобщение'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Senden Sie uns eine Nachricht'],
+		]
+	],
+	[
+		'KEY' => 'contact-full-name',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Full Name'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Пълно име'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Vollständiger Name'],
+		]
+	],
+	[
+		'KEY' => 'contact-company-name',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Company Name'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Име на компанията'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Firmenname'],
+		]
+	],
+	[
+		'KEY' => 'contact-work-email',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Work Email'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Служебен имейл'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Geschäftliche E-Mail'],
+		]
+	],
+	[
+		'KEY' => 'contact-phone-optional',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Phone Number (optional)'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Телефонен номер (по избор)'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Telefonnummer (optional)'],
+		]
+	],
+	[
+		'KEY' => 'contact-select-service',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Select a service'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Изберете услуга'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Wählen Sie einen Service'],
+		]
+	],
+	[
+		'KEY' => 'contact-digitalization',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Digitalization'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Дигитализация'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Digitalisierung'],
+		]
+	],
+	[
+		'KEY' => 'contact-website-building',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Website Building'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Изграждане на уебсайтове'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Webseitenbau'],
+		]
+	],
+	[
+		'KEY' => 'contact-hardware-maintenance',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Hardware Maintenance'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Поддръжка на хардуер'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Hardwarewartung'],
+		]
+	],
+	[
+		'KEY' => 'contact-b2b-software',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'B2B Software'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'B2B Софтуер'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'B2B-Software'],
+		]
+	],
+	[
+		'KEY' => 'contact-custom-software',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Custom Software/System Development'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Разработка на персонализиран софтуер/система'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Individuelle Software-/Systementwicklung'],
+		]
+	],
+	[
+		'KEY' => 'contact-other',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Other'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Друго'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Andere'],
+		]
+	],
+	[
+		'KEY' => 'contact-service-interest',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Service of Interest'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Интересуваща услуга'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Interessierender Service'],
+		]
+	],
+	[
+		'KEY' => 'contact-please-specify',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Please specify'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Моля, уточнете'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Bitte angeben'],
+		]
+	],
+	[
+		'KEY' => 'contact-title',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Contact us'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Свържете се с нас'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Kontaktieren Sie uns'],
+		]
+	],
+	[
+		'KEY' => 'contact-description',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Get in touch with our team to discuss your project requirements or learn more about our services.'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Свържете се с нашия екип, за да обсъдите вашите проектни изисквания или да научите повече за нашите услуги.'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Kontaktieren Sie unser Team, um Ihre Projektanforderungen zu besprechen oder mehr über unsere Dienstleistungen zu erfahren.'],
+		]
+	],
+	[
+		'KEY' => 'contact-email',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Email:'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Имейл:'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'E-Mail:'],
+		]
+	],
+	[
+		'KEY' => 'contact-phone',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Phone:'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Телефон:'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Telefon:'],
+		]
+	],
+	[
+		'KEY' => 'contact-send-message',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Send us a message'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Изпратете ни съобщение'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Senden Sie uns eine Nachricht'],
+		]
+	],
+	[
+		'KEY' => 'contact-full-name',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Full Name'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Пълно име'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Vollständiger Name'],
+		]
+	],
+	[
+		'KEY' => 'contact-company-name',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Company Name'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Име на компанията'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Firmenname'],
+		]
+	],
+	[
+		'KEY' => 'contact-work-email',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Work Email'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Служебен имейл'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Geschäftliche E-Mail'],
+		]
+	],
+	[
+		'KEY' => 'contact-phone-optional',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Phone Number (optional)'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Телефонен номер (по избор)'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Telefonnummer (optional)'],
+		]
+	],
+	[
+		'KEY' => 'contact-select-service',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Select a service'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Изберете услуга'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Wählen Sie einen Service'],
+		]
+	],
+	[
+		'KEY' => 'contact-digitalization',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Digitalization'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Дигитализация'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Digitalisierung'],
+		]
+	],
+	[
+		'KEY' => 'contact-website-building',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Website Building'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Изграждане на уебсайтове'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Webseitenbau'],
+		]
+	],
+	[
+		'KEY' => 'contact-hardware-maintenance',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Hardware Maintenance'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Поддръжка на хардуер'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Hardwarewartung'],
+		]
+	],
+	[
+		'KEY' => 'contact-b2b-software',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'B2B Software'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'B2B Софтуер'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'B2B-Software'],
+		]
+	],
+	[
+		'KEY' => 'contact-custom-software',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Custom Software/System Development'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Разработка на персонализиран софтуер/система'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Individuelle Software-/Systementwicklung'],
+		]
+	],
+	[
+		'KEY' => 'contact-other',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Other'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Друго'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Andere'],
+		]
+	],
+	[
+		'KEY' => 'contact-service-interest',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Service of Interest'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Интересуваща услуга'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Interessierender Service'],
+		]
+	],
+	[
+		'KEY' => 'contact-please-specify',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Please specify'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Моля, уточнете'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Bitte angeben'],
+		]
+	],
 
+	// Footer Phrases
+	[
+		'KEY' => 'footer-contact-info',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Contact info:'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Контактна информация:'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Kontaktinformationen:'],
+		]
+	],
+	[
+		'KEY' => 'footer-email',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Email:'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Имейл:'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'E-Mail:'],
+		]
+	],
+	[
+		'KEY' => 'footer-phone',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Phone:'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Телефон:'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Telefon:'],
+		]
+	],
+	[
+		'KEY' => 'footer-services',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Services:'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Услуги:'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Dienstleistungen:'],
+		]
+	],
+	[
+		'KEY' => 'footer-website-building',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Website Building'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Изграждане на уебсайтове'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Webseitenbau'],
+		]
+	],
+	[
+		'KEY' => 'footer-hardware-maintenance',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Hardware Maintenance'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Поддръжка на хардуер'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Hardwarewartung'],
+		]
+	],
+	[
+		'KEY' => 'footer-connect',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Connect with us!'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Свържете се с нас!'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Verbinden Sie sich mit uns!'],
+		]
+	],
+	[
+		'KEY' => 'footer-company',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Pulpudev'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Палпудев'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Pulpudev'],
+		]
+	],
+	[
+		'KEY' => 'footer-copyright',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => '© Copyright 2025.<br> All Rights Reserved.'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => '© Копирайт 2025.<br> Всички права запазени.'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => '© Copyright 2025.<br> Alle Rechte vorbehalten.'],
+		]
+	],
+	[
+		'KEY' => 'footer-contact-info',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Contact info:'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Контактна информация:'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Kontaktinformationen:'],
+		]
+	],
+	[
+		'KEY' => 'footer-email',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Email:'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Имейл:'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'E-Mail:'],
+		]
+	],
+	[
+		'KEY' => 'footer-phone',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Phone:'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Телефон:'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Telefon:'],
+		]
+	],
+	[
+		'KEY' => 'footer-services',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Services:'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Услуги:'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Dienstleistungen:'],
+		]
+	],
+	[
+		'KEY' => 'footer-website-building',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Website Building'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Изграждане на уебсайтове'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Webseitenbau'],
+		]
+	],
+	[
+		'KEY' => 'footer-hardware-maintenance',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Hardware Maintenance'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Поддръжка на хардуер'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Hardwarewartung'],
+		]
+	],
+	[
+		'KEY' => 'footer-connect',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Connect with us!'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Свържете се с нас!'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Verbinden Sie sich mit uns!'],
+		]
+	],
 ];

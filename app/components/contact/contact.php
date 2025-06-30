@@ -10,15 +10,15 @@
                     <div class="row">
                         <div class="col-lg-5">
                             <div class="contact-info mb-5 mb-lg-0">
-                                <h2 class="contact-title" id="contact">Contact us</h2>
-                                <p class="contact-description">Get in touch with our team to discuss your project requirements or learn more about our services.</p>
+                                <h2 class="contact-title" id="contact"><?php echo $_SESSION['phrases']['contact-title'] ?></h2>
+                                <p class="contact-description"><?php echo $_SESSION['phrases']['contact-description'] ?></p>
                                 <div class="contact-details mt-4">
                                     <div class="contact-detail-item">
-                                        <strong>Email:</strong>
+                                        <strong><?php echo $_SESSION['phrases']['contact-email'] ?></strong>
                                         <a href="mailto:sales@pulpudev.com" class="contact-link">sales@pulpudev.com</a>
                                     </div>
                                     <div class="contact-detail-item">
-                                        <strong>Phone:</strong>
+                                        <strong><?php echo $_SESSION['phrases']['contact-phone'] ?></strong>
                                         <a href="tel:+359878818575" class="contact-link">+359 87 881 8575</a>
                                     </div>
                                     <!-- For now we don`t have so leave it for later-->
@@ -31,51 +31,51 @@
                         </div>
                         <div class="col-lg-7">
                             <div class="contact-form-container">
-                                <h3 class="mb-4">Send us a message</h3>
+                                <h3 class="mb-4"><?php echo $_SESSION['phrases']['contact-send-message'] ?></h3>
                                 <form id="contactForm" action="/backend/send_mail.php" method="post" enctype="multipart/form-data">
                                     <div class="row g-3">
                                         <div class="col-md-6">
                                             <div class="form-floating mb-3">
-                                                <input type="text" class="form-control" id="fullName" name="fullName" placeholder="Full Name" required>
-                                                <label for="fullName">Full Name</label>
+                                                <input type="text" class="form-control" id="fullName" name="fullName" placeholder="<?php echo $_SESSION['phrases']['contact-full-name'] ?>" required>
+                                                <label for="fullName"><?php echo $_SESSION['phrases']['contact-full-name'] ?></label>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-floating mb-3">
-                                                <input type="text" class="form-control" id="companyName" name="companyName" placeholder="Company Name" required>
-                                                <label for="companyName">Company Name</label>
+                                                <input type="text" class="form-control" id="companyName" name="companyName" placeholder="<?php echo $_SESSION['phrases']['contact-company-name'] ?>" required>
+                                                <label for="companyName"><?php echo $_SESSION['phrases']['contact-company-name'] ?></label>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-floating mb-3">
-                                                <input type="email" class="form-control" id="workEmail" name="workEmail" placeholder="Work Email" required>
-                                                <label for="workEmail">Work Email</label>
+                                                <input type="email" class="form-control" id="workEmail" name="workEmail" placeholder="<?php echo $_SESSION['phrases']['contact-work-email'] ?>" required>
+                                                <label for="workEmail"><?php echo $_SESSION['phrases']['contact-work-email'] ?></label>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-floating mb-3">
-                                                <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Phone Number (optional)">
-                                                <label for="phoneNumber">Phone Number (optional)</label>
+                                                <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="<?php echo $_SESSION['phrases']['contact-phone-optional'] ?>">
+                                                <label for="phoneNumber"><?php echo $_SESSION['phrases']['contact-phone-optional'] ?></label>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-floating mb-3">
                                                 <select class="form-select" id="serviceInterest" name="serviceInterest" required>
-                                                    <option value="" selected disabled>Select a service</option>
-                                                    <option value="Digitalization">Digitalization</option>
-                                                    <option value="WebsiteBuilding">Website Building</option>
-                                                    <option value="HardwareMaintenance">Hardware Maintenance</option>
-                                                    <option value="B2BSoftware">B2B Software</option>
-                                                    <option value="CustomSoftware">Custom Software/System Development</option>
-                                                    <option value="Other">Other</option>
+                                                    <option value="" selected disabled><?php echo $_SESSION['phrases']['contact-select-service'] ?></option>
+                                                    <option value="Digitalization"><?php echo $_SESSION['phrases']['contact-digitalization'] ?></option>
+                                                    <option value="WebsiteBuilding"><?php echo $_SESSION['phrases']['contact-website-building'] ?></option>
+                                                    <option value="HardwareMaintenance"><?php echo $_SESSION['phrases']['contact-hardware-maintenance'] ?></option>
+                                                    <option value="B2BSoftware"><?php echo $_SESSION['phrases']['contact-b2b-software'] ?></option>
+                                                    <option value="CustomSoftware"><?php echo $_SESSION['phrases']['contact-custom-software'] ?></option>
+                                                    <option value="Other"><?php echo $_SESSION['phrases']['contact-other'] ?></option>
                                                 </select>
-                                                <label for="serviceInterest">Service of Interest</label>
+                                                <label for="serviceInterest"><?php echo $_SESSION['phrases']['contact-service-interest'] ?></label>
                                             </div>
                                         </div>
                                         <div class="col-12" id="otherServiceContainer" style="display: none;">
                                             <div class="form-floating mb-3">
-                                                <input type="text" class="form-control" id="otherService" name="otherService" placeholder="Please specify">
-                                                <label for="otherService">Please specify</label>
+                                                <input type="text" class="form-control" id="otherService" name="otherService" placeholder="<?php echo $_SESSION['phrases']['contact-please-specify'] ?>">
+                                                <label for="otherService"><?php echo $_SESSION['phrases']['contact-please-specify'] ?></label>
                                             </div>
                                         </div>
                                         <div class="col-12">
