@@ -17,10 +17,10 @@
                                         <strong><?php echo $_SESSION['phrases']['contact-email'] ?></strong>
                                         <a href="mailto:sales@pulpudev.com" class="contact-link">sales@pulpudev.com</a>
                                     </div>
-                                    <div class="contact-detail-item">
+                                    <!-- <div class="contact-detail-item">
                                         <strong><?php echo $_SESSION['phrases']['contact-phone'] ?></strong>
-                                        <a href="tel:+359878818575" class="contact-link">+359 87 881 8575</a>
-                                    </div>
+                                        <a href="tel:+359878818575" class="contact-link"></a>
+                                    </div> -->
                                     <!-- For now we don`t have so leave it for later-->
                                     <!-- <div class="contact-detail-item">
                                         <strong>Address:</strong>
