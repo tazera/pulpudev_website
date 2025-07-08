@@ -35,8 +35,7 @@ function handle_error($message, $redirect_url, $http_code = 403)
 
 // 1. Check that the request method is POST
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('Location: /');
-    exit;
+    handle_error("Method not allowed", '/', 405); // 405 Method Not Allowed
 }
 
 // 2. Check referrer to ensure the form was submitted from your website
@@ -58,8 +57,7 @@ foreach ($allowed_referrers as $allowed) {
 
 if (!$valid_referrer) {
     error_log("Invalid referrer: $referrer");
-    header('Location: /?contact=failed&reason=security');
-    exit;
+    handle_error("Invalid referrer", '/?contact=failed&reason=security', 403);
 }
 
 // 3. Add a honeypot field check
@@ -68,9 +66,17 @@ if (!empty($_POST['website'])) {
     // If the hidden field was filled, it's likely a bot
     // Log the attempt but don't tell the bot it was detected
     error_log("Honeypot field filled - potential bot submission");
-    // Pretend to process but redirect
-    header('Location: /?contact=success'); // Fake success to confuse bots
-    exit;
+    // Pretend to process but handle differently based on client type
+    if ($is_api_client) {
+        // Return 200 OK with success message to confuse bots
+        header('Content-Type: application/json');
+        echo json_encode(['success' => true]);
+        exit;
+    } else {
+        // Redirect browser to success page to confuse bots
+        header('Location: /?contact=success');
+        exit;
+    }
 }
 
 // 4. Rate limiting (simple version)
@@ -156,9 +162,21 @@ foreach ($recipients as $recipient) {
 if ($success) {
     // Generate a new token for next time
     $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
-    header('Location: /?contact=success');
+
+    if ($is_api_client) {
+        header('Content-Type: application/json');
+        echo json_encode(['success' => true, 'message' => 'Email sent successfully']);
+    } else {
+        header('Location: /?contact=success');
+    }
 } else {
-    header('Location: /?contact=failed');
+    if ($is_api_client) {
+        header('Content-Type: application/json');
+        http_response_code(500);
+        echo json_encode(['error' => 'Failed to send email']);
+    } else {
+        header('Location: /?contact=failed');
+    }
 }
 exit;
 
