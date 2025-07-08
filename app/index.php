@@ -1,4 +1,3 @@
 <?php
-// header("Location: /pages/home/home.php");
-header("Location: /");
+header("Location: /pages/home/home.php");
 exit;
