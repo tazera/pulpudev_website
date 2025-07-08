@@ -50,10 +50,10 @@ if (!empty($_POST['website'])) {
 // 4. Rate limiting (simple version)
 // Store the last submission time in the session
 $current_time = time();
-$min_time_between_submissions = 60; // seconds
+$min_time_between_submissions = 1; // seconds
 
 if (
-    isset($_SESSION['last_form_submission']) && 
+    isset($_SESSION['last_form_submission']) &&
     ($current_time - $_SESSION['last_form_submission']) < $min_time_between_submissions
 ) {
     header('Location: /?contact=failed&reason=rate');
