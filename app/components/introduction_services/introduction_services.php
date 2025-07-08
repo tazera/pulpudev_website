@@ -259,6 +259,39 @@
                 gap: 8px;
             }
         }
+
+        /* Custom container width - wider than default but not full width for services */
+        .container-custom {
+            width: 100%;
+            max-width: 1700px;
+            /* Adjust this value as needed */
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        /* Responsive adjustments for the image so that they are the same size always */
+        #content-image {
+            width: 1400px;
+            height: 500px;
+            object-fit: cover;
+            display: block;
+            /* This preserves aspect ratio without stretching */
+            background: #232323;
+            /* Matching the background of your other images */
+            margin: 0 auto;
+        }
+
+        /* Responsive adjustments for the image */
+        @media (max-width: 991px) {
+            #content-image {
+                width: 100%;
+                height: auto;
+                aspect-ratio: 16 / 9;
+                /* Maintains the same aspect ratio */
+            }
+        }
     </style>
 </head>
 
@@ -266,13 +299,13 @@
 
     <section class="section-padding" id="services-button-go-to">
 
-        <div class="container">
+        <div class="container-custom">
             <div class="text-center mb-5">
                 <h2 class="section-title" id="services"><?php echo $_SESSION['phrases']['services-title'] ?></h2>
                 <p class="section-subtitle mx-auto"><?php echo $_SESSION['phrases']['services-subtitle'] ?></p>
             </div>
         </div>
-        <div class="container">
+        <div class="container-custom">
             <!-- Top two cards -->
             <div class="row g-4 mb-4 align-items-stretch">
                 <div class="col-12 col-lg-6 d-flex">
@@ -339,7 +372,7 @@
                 </div>
                 <!-- Here we can set the path for the image -->
                 <div class="col-md-6 bottom-card-image text-end order-2 order-md-2">
-                    <img id="content-image" src="/images/screenshot.webp" alt="Project Overview Screenshot" width="400" height="220" data-default-src="/images/screenshot.webp" img-service-one-src="/images/services/img1.webp" img-service-two-src="/images/home/image2.webp" img-service-three-src="/images/home/image3.webp" />
+                    <img id="content-image" src="/images/screenshot.webp" alt="Project Overview Screenshot" width="400" height="220" data-default-src="/images/screenshot.webp" img-service-one-src="/images/services/img1.webp" img-service-two-src="/images/services/img2.webp" img-service-three-src="/images/services/img3.webp" />
                 </div>
             </div>
         </div>
