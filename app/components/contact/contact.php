@@ -37,6 +37,8 @@
                             <div class="contact-form-container">
                                 <h3 class="mb-4"><?php echo $_SESSION['phrases']['contact-send-message'] ?></h3>
                                 <form id="contactForm" action="/backend/send_mail.php" method="post" enctype="multipart/form-data">
+                                    <input type="hidden" name="csrf_token" value="<?php echo generate_csrf_token(); ?>">
+                                    <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off">
                                     <div class="row g-3">
                                         <div class="col-md-6">
                                             <div class="form-floating mb-3">

@@ -102,3 +102,36 @@ function get_visitor_data($db)
 	}
 	return $visits;
 }
+
+/**
+ * Generate a new CSRF token and store it in the session
+ * @return string The generated CSRF token
+ */
+function generate_csrf_token()
+{
+	if (!isset($_SESSION['csrf_token'])) {
+		$_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+	}
+	return $_SESSION['csrf_token'];
+}
+
+/**
+ * Verify that the submitted CSRF token matches the one in the session
+ * @param string $token The token to verify
+ * @return bool Whether the token is valid
+ */
+function verify_csrf_token($token)
+{
+	if (!isset($_SESSION['csrf_token']) || !isset($token)) {
+		return false;
+	}
+
+	// Use a timing-safe comparison to prevent timing attacks
+	if (hash_equals($_SESSION['csrf_token'], $token)) {
+		// Optional: Regenerate the token after each verification for added security
+		// $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+		return true;
+	}
+
+	return false;
+}

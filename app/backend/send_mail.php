@@ -2,10 +2,82 @@
 require_once("{$_SERVER['DOCUMENT_ROOT']}/config.php");
 require_once("{$_SERVER['DOCUMENT_ROOT']}/components/functions.php");
 
+// Start session if not already started
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+// 1. Check that the request method is POST
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    header('Location: /');
+    exit;
+}
+
+// 2. Check referrer to ensure the form was submitted from your website
+$allowed_referrers = [
+    'https://pulpudev.com/',
+    'https://www.pulpudev.com/',
+    'http://localhost/', // For development
+];
+
+$referrer = $_SERVER['HTTP_REFERER'] ?? '';
+$valid_referrer = false;
+
+foreach ($allowed_referrers as $allowed) {
+    if (strpos($referrer, $allowed) === 0) {
+        $valid_referrer = true;
+        break;
+    }
+}
+
+if (!$valid_referrer) {
+    error_log("Invalid referrer: $referrer");
+    header('Location: /?contact=failed&reason=security');
+    exit;
+}
+
+// 3. Add a honeypot field check
+// Note: Make sure to add this field to your form: <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off">
+if (!empty($_POST['website'])) {
+    // If the hidden field was filled, it's likely a bot
+    // Log the attempt but don't tell the bot it was detected
+    error_log("Honeypot field filled - potential bot submission");
+    // Pretend to process but redirect
+    header('Location: /?contact=success'); // Fake success to confuse bots
+    exit;
+}
+
+// 4. Rate limiting (simple version)
+// Store the last submission time in the session
+$current_time = time();
+$min_time_between_submissions = 60; // seconds
+
+if (
+    isset($_SESSION['last_form_submission']) && 
+    ($current_time - $_SESSION['last_form_submission']) < $min_time_between_submissions
+) {
+    header('Location: /?contact=failed&reason=rate');
+    exit;
+}
+
+$_SESSION['last_form_submission'] = $current_time;
+
+// Check CSRF token
+if (!isset($_POST['csrf_token']) || !verify_csrf_token($_POST['csrf_token'])) {
+    // Invalid token, log the attempt and redirect
+    error_log("CSRF token validation failed for form submission");
+    header('Location: /?contact=failed&reason=security');
+    exit;
+}
+
 // Import necessary PHPMailer classes
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\SMTP;
+
+
+
+
 
 // Make sure autoload is included
 require_once("{$_SERVER['DOCUMENT_ROOT']}/vendor/autoload.php");
@@ -58,6 +130,8 @@ foreach ($recipients as $recipient) {
 }
 
 if ($success) {
+    // Generate a new token for next time
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
     header('Location: /?contact=success');
 } else {
     header('Location: /?contact=failed');
