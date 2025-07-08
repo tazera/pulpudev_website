@@ -16,7 +16,9 @@
                 <li class="nav-item mb-2"><a class="nav-link p-0 text-body-secondary"><strong><?php echo $_SESSION['phrases']['footer-email'] ?></strong>
                         info@pulpudev.com</a></li>
                 <li class="nav-item mb-2"><a class="nav-link p-0 text-body-secondary"><strong><?php echo $_SESSION['phrases']['footer-phone'] ?></strong> +359 887
-                        6363 11</a></li>
+                        636 311</a></li>
+                <li class="nav-item mb-2"><a class="nav-link p-0 text-body-secondary"><strong><?php echo $_SESSION['phrases']['footer-phone'] ?></strong> +359 878 818 575
+                    </a></li>
             </ul>
         </div>
 

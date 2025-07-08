@@ -282,7 +282,7 @@
                             </h3>
                             <p class="mb-0 top-card-text"><?php echo $_SESSION['phrases']['services-box-text1'] ?></p>
                         </div>
-                        <img src="/images/screenshot.webp" alt="Specs" width="400" height="220" class="card-img-right d-none d-md-block" />
+                        <img src="/images/img1.webp" alt="Specs" width="400" height="220" class="card-img-right d-none d-md-block" />
                     </div>
                 </div>
                 <div class="col-12 col-lg-6 d-flex">
@@ -291,7 +291,7 @@
                             <h3 class="top-card-title mb-3"><?php echo $_SESSION['phrases']['services-box-title2'] ?></h3>
                             <p class="mb-0 top-card-text"><?php echo $_SESSION['phrases']['services-box-text2'] ?></p>
                         </div>
-                        <img src="/images/screenshot.webp" alt="Updates" width="400" height="220" class="card-img-right d-none d-md-block" />
+                        <img src="/images/img2.webp" alt="Updates" width="400" height="220" class="card-img-right d-none d-md-block" />
                     </div>
                 </div>
             </div>
@@ -337,8 +337,9 @@
                         </div>
                     </div>
                 </div>
+                <!-- Here we can set the path for the image -->
                 <div class="col-md-6 bottom-card-image text-end order-2 order-md-2">
-                    <img id="content-image" src="/images/screenshot.webp" alt="Project Overview Screenshot" width="400" height="220" data-default-src="/images/screenshot.webp" data-collaborative-src="/images/home/image1.webp" data-comments-src="/images/home/image2.png" data-commands-src="/images/home/image3.webp" />
+                    <img id="content-image" src="/images/screenshot.webp" alt="Project Overview Screenshot" width="400" height="220" data-default-src="/images/screenshot.webp" img-service-one-src="/images/services/img1.webp" img-service-two-src="/images/home/image2.webp" img-service-three-src="/images/home/image3.webp" />
                 </div>
             </div>
         </div>
@@ -357,13 +358,13 @@
             const firstDescription = firstRow.getAttribute('data-description');
             contentTitle.textContent = firstTitle;
             contentDescription.textContent = firstDescription;
-            contentImage.src = contentImage.getAttribute('data-collaborative-src');
+            contentImage.src = contentImage.getAttribute('img-service-one-src');
 
             // Store default content for reset functionality
             const defaultContent = {
                 title: firstTitle,
                 description: firstDescription,
-                image: contentImage.getAttribute('data-collaborative-src')
+                image: contentImage.getAttribute('img-service-one-src')
             };
 
             // Set first row as active on load
@@ -385,15 +386,15 @@
 
                     // Change content based on which button was clicked
                     if (index === 0) { // Collaborative documents
-                        contentImage.src = contentImage.getAttribute('data-collaborative-src');
+                        contentImage.src = contentImage.getAttribute('img-service-one-src');
                         contentTitle.textContent = title;
                         contentDescription.textContent = description;
                     } else if (index === 1) { // Inline comments
-                        contentImage.src = contentImage.getAttribute('data-comments-src');
+                        contentImage.src = contentImage.getAttribute('img-service-two-src');
                         contentTitle.textContent = title;
                         contentDescription.textContent = description;
                     } else if (index === 2) { // Text-to-issue commands
-                        contentImage.src = contentImage.getAttribute('data-commands-src');
+                        contentImage.src = contentImage.getAttribute('img-service-three-src');
                         contentTitle.textContent = title;
                         contentDescription.textContent = description;
                     } else {
