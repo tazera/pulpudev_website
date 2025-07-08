@@ -58,9 +58,9 @@ foreach ($recipients as $recipient) {
 }
 
 if ($success) {
-    header('Location: /pages/home/home.php?contact=success');
+    header('Location: /?contact=success');
 } else {
-    header('Location: /pages/home/home.php?contact=failed');
+    header('Location: /?contact=failed');
 }
 exit;
 

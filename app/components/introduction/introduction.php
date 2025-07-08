@@ -40,7 +40,7 @@
         <p class="hero-subtitle">
             <?php echo $_SESSION['phrases']['introduction-hero-subtitle'] ?>
         </p>
-        <a href="/pages/home/home.php#services-button-go-to"
+        <a href="/#services-button-go-to"
             class="btn btn-lg rounded-pill animated-btn custom-btn"><?php echo $_SESSION['phrases']['introduction-hero-button'] ?></a>
     </div>
 </section>
