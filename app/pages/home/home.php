@@ -48,7 +48,7 @@ init(basename($_SERVER['PHP_SELF']), $default_theme);
     <!-- Smooth Scroll Script needs to be moved later -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const btn = document.querySelector('a[href="/pages/home/home.php#services-button-go-to"]');
+            const btn = document.querySelector('a[href="/#services-button-go-to"]');
             if (btn) {
                 btn.addEventListener('click', function(e) {
                     const target = document.getElementById('services-button-go-to');
