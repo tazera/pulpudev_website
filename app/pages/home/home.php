@@ -1,4 +1,19 @@
 <?php
+
+// First line of home.php - add redirection check
+$current_url = $_SERVER['REQUEST_URI'];
+$base_url = preg_replace('/[?#].*$/', '', $current_url);
+
+// If accessed directly, redirect to root and preserve fragment
+if ($base_url == '/pages/home/home.php') {
+    $fragment = '';
+    if (strpos($current_url, '#') !== false) {
+        $fragment = substr($current_url, strpos($current_url, '#'));
+    }
+    header("Location: /" . $fragment);
+    exit;
+}
+
 require_once("{$_SERVER['DOCUMENT_ROOT']}/components/component_functions.php");
 require_once("{$_SERVER['DOCUMENT_ROOT']}/components/functions.php");
 require_once("{$_SERVER['DOCUMENT_ROOT']}/config.php");
