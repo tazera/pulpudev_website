@@ -7,6 +7,32 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
+// Detect if the request is coming from a browser or an API client
+$is_api_client = (
+    !isset($_SERVER['HTTP_USER_AGENT']) ||
+    strpos($_SERVER['HTTP_USER_AGENT'], 'Mozilla') === false
+);
+
+// Helper function to handle errors differently for browsers vs API clients
+function handle_error($message, $redirect_url, $http_code = 403)
+{
+    global $is_api_client;
+
+    error_log($message);
+
+    if ($is_api_client) {
+        // Return proper HTTP error for API clients like Postman
+        header('Content-Type: application/json');
+        http_response_code($http_code);
+        echo json_encode(['error' => $message]);
+        exit;
+    } else {
+        // Redirect for browsers
+        header("Location: $redirect_url");
+        exit;
+    }
+}
+
 // 1. Check that the request method is POST
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header('Location: /');
@@ -56,7 +82,7 @@ if (
     isset($_SESSION['last_form_submission']) &&
     ($current_time - $_SESSION['last_form_submission']) < $min_time_between_submissions
 ) {
-    header('Location: /?contact=failed&reason=rate');
+    handle_error("Rate limit exceeded", '/?contact=failed&reason=rate', 429); // 429 Too Many Requests
     exit;
 }
 
@@ -65,9 +91,7 @@ $_SESSION['last_form_submission'] = $current_time;
 // Check CSRF token
 if (!isset($_POST['csrf_token']) || !verify_csrf_token($_POST['csrf_token'])) {
     // Invalid token, log the attempt and redirect
-    error_log("CSRF token validation failed for form submission");
-    header('Location: /?contact=failed&reason=security');
-    exit;
+    handle_error("CSRF token validation failed", '/?contact=failed&reason=security', 403);
 }
 
 // Import necessary PHPMailer classes
