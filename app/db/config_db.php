@@ -12,6 +12,19 @@ $tables = [
 
 		FOREIGN KEY (LANGUAGE_ISO_CODE) REFERENCES LANGUAGES(ISO_CODE)
 	)',
+	'CREATE TABLE IF NOT EXISTS "PROJECTS" (
+		"ID" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+		"IMAGE" VARCHAR(255) NOT NULL,
+		"TAGS" TEXT NOT NULL, /* Stored as JSON array */
+		"TITLE_KEY" VARCHAR(100) NOT NULL, /* Reference to PHRASES table key */
+		"DESCRIPTION_KEY" VARCHAR(100) NOT NULL, /* Reference to PHRASES table key */
+		"CHALLENGE_KEY" VARCHAR(100) NOT NULL, /* Reference to PHRASES table key */
+		"SOLUTION_KEY" VARCHAR(100) NOT NULL, /* Reference to PHRASES table key */
+		"RESULT_KEY" VARCHAR(100) NOT NULL, /* Reference to PHRASES table key */
+		"METRICS" TEXT NOT NULL, /* Stored as JSON array */
+		"MEDIA" TEXT NOT NULL, /* Stored as JSON array */
+		"FEATURED" BOOLEAN DEFAULT 0 /* To mark featured projects */
+	)',
 	'CREATE TABLE IF NOT EXISTS "VISITS" (
 		"ID" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
 		"PAGE" VARCHAR(100),
@@ -32,6 +45,46 @@ $languages = [
 	['ISO_CODE' => 'EN', 'NAME' => 'English'],
 	['ISO_CODE' => 'BG', 'NAME' => 'Български'],
 	['ISO_CODE' => 'DE', 'NAME' => 'Deutsch']
+];
+
+// Add the project data to be inserted
+$projects = [
+	[
+		'IMAGE' => '/images/projects/plamen1.webp',
+		'TAGS' => json_encode(['Desktop App', 'SaaS']),
+		'TITLE_KEY' => 'projects1-h2', // Reference to existing phrase
+		'DESCRIPTION_KEY' => 'projects1-description',
+		'CHALLENGE_KEY' => 'projects1-challenge',
+		'SOLUTION_KEY' => 'projects1-solution',
+		'RESULT_KEY' => 'projects1-result',
+		'METRICS' => json_encode(['42% faster handoffs', '87% user adoption']),
+		'MEDIA' => json_encode(['/images/projects/project1.webp', '/images/projects/project1.webp']),
+		'FEATURED' => 1
+	],
+	[
+		'IMAGE' => '/images/projects/laki.webp',
+		'TAGS' => json_encode(['WebSite', 'E-commerce', 'Web App']),
+		'TITLE_KEY' => 'projects2-h2',
+		'DESCRIPTION_KEY' => 'projects2-description',
+		'CHALLENGE_KEY' => 'projects2-challenge',
+		'SOLUTION_KEY' => 'projects2-solution',
+		'RESULT_KEY' => 'projects2-result',
+		'METRICS' => json_encode(['230K downloads', '28% higher conversion']),
+		'MEDIA' => json_encode(['/images/projects/project1.webp', '/images/projects/project1.webp']),
+		'FEATURED' => 1
+	],
+	[
+		'IMAGE' => '/images/projects/project1.webp',
+		'TAGS' => json_encode(['Data Analytics', 'Dashboard']),
+		'TITLE_KEY' => 'projects3-h2',
+		'DESCRIPTION_KEY' => 'projects3-description',
+		'CHALLENGE_KEY' => 'projects3-challenge',
+		'SOLUTION_KEY' => 'projects3-solution',
+		'RESULT_KEY' => 'projects3-result',
+		'METRICS' => json_encode(['1.5 days shorter stays', '$2.4M annual savings']),
+		'MEDIA' => json_encode(['/images/projects/project1.webp', '/images/projects/project1.webp']),
+		'FEATURED' => 1
+	]
 ];
 
 $phrases = [
@@ -281,12 +334,128 @@ $phrases = [
 			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Entdecken Sie unser Sortiment an Produkten, die auf Ihre Bedürfnisse zugeschnitten sind. Von innovativen Softwarelösungen bis hin zu zuverlässiger Hardware haben wir alles, was Sie für Ihren Erfolg benötigen.'],
 		]
 	],
+	// Project titles and descriptions
 	[
 		'KEY' => 'projects1-h2',
 		'TRANSLATIONS' => [
 			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Enterprise Shop Management System'],
 			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Система за управление на корпоративен магазин'],
 			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Enterprise-Shop-Management-System'],
+		]
+	],
+	[
+		'KEY' => 'projects2-h2',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Retail Mobile Shopping Experience'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Мобилно пазаруване за търговци на дребно'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Mobile Shopping-Erlebnis für den Einzelhandel'],
+		]
+	],
+	[
+		'KEY' => 'projects3-h2',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Healthcare Analytics Platform'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Платформа за здравни анализи'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Healthcare-Analyseplattform'],
+		]
+	],
+	// Project 1 content translations
+	[
+		'KEY' => 'projects1-description',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'A comprehensive task management platform for enterprise teams with real-time collaboration features.'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Всеобхватна платформа за управление на задачи за корпоративни екипи с функции за сътрудничество в реално време.'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Eine umfassende Aufgabenverwaltungsplattform für Unternehmensteams mit Echtzeit-Zusammenarbeitsfunktionen.'],
+		]
+	],
+	[
+		'KEY' => 'projects1-challenge',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'The client needed to unify their task management across 12 departments with varying workflows and compliance requirements.'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Клиентът трябваше да унифицира управлението на задачите си в 12 отдела с различни работни потоци и изисквания за съответствие.'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Der Kunde musste seine Aufgabenverwaltung in 12 Abteilungen mit unterschiedlichen Arbeitsabläufen und Compliance-Anforderungen vereinheitlichen.'],
+		]
+	],
+	[
+		'KEY' => 'projects1-solution',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'We developed a flexible system with customizable workflows, role-based permissions, and detailed audit logs for compliance tracking.'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Разработихме гъвкава система с персонализируеми работни потоци, разрешения, базирани на роли, и подробни одитни логове за проследяване на съответствието.'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Wir haben ein flexibles System mit anpassbaren Workflows, rollenbasierten Berechtigungen und detaillierten Prüfprotokollen für die Compliance-Verfolgung entwickelt.'],
+		]
+	],
+	[
+		'KEY' => 'projects1-result',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Reduced task handoff time by 42% and improved cross-department visibility by implementing shared dashboards.'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Намалено време за предаване на задачи с 42% и подобрена видимост между отделите чрез внедряване на споделени табла.'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Die Übergabezeit für Aufgaben wurde um 42 % reduziert und die abteilungsübergreifende Sichtbarkeit durch die Implementierung gemeinsamer Dashboards verbessert.'],
+		]
+	],
+	// Project 2 content translations
+	[
+		'KEY' => 'projects2-description',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'A sleek mobile application for a retail chain enabling personalized shopping experiences.'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Елегантно мобилно приложение за търговска верига, позволяващо персонализирани преживявания при пазаруване.'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Eine elegante mobile Anwendung für eine Einzelhandelskette, die personalisierte Einkaufserlebnisse ermöglicht.'],
+		]
+	],
+	[
+		'KEY' => 'projects2-challenge',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'The retail chain was losing market share to competitors with better digital presence and needed a mobile-first approach.'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Търговската верига губеше пазарен дял в полза на конкуренти с по-добро дигитално присъствие и се нуждаеше от подход, ориентиран към мобилни устройства.'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Die Einzelhandelskette verlor Marktanteile an Wettbewerber mit besserer digitaler Präsenz und benötigte einen mobilen Ansatz.'],
+		]
+	],
+	[
+		'KEY' => 'projects2-solution',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'We created a native mobile app with AR product previews, personalized recommendations, and seamless checkout process.'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Създадохме нативно мобилно приложение с AR визуализации на продукти, персонализирани препоръки и безпроблемен процес на плащане.'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Wir haben eine native mobile App mit AR-Produktvorschauen, personalisierten Empfehlungen und einem nahtlosen Checkout-Prozess erstellt.'],
+		]
+	],
+	[
+		'KEY' => 'projects2-result',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'The application achieved 230,000 downloads in the first quarter and increased mobile conversions by 28%.'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Приложението постигна 230 000 изтегляния през първото тримесечие и увеличи мобилните конверсии с 28%.'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Die Anwendung erreichte im ersten Quartal 230.000 Downloads und steigerte die mobilen Conversions um 28 %.'],
+		]
+	],
+	// Project 3 content translations
+	[
+		'KEY' => 'projects3-description',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Data visualization and analytics dashboard for healthcare providers tracking patient outcomes.'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Табло за визуализация на данни и анализ за здравни доставчици, проследяващо резултатите на пациентите.'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Datenvisualisierungs- und Analysedashboard für Gesundheitsdienstleister zur Verfolgung von Patientenergebnissen.'],
+		]
+	],
+	[
+		'KEY' => 'projects3-challenge',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Healthcare providers struggled with disconnected data systems and lacked insights for improving patient care.'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Здравните доставчици се бореха с несвързани системи за данни и им липсваше информация за подобряване на грижите за пациентите.'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Gesundheitsdienstleister kämpften mit nicht vernetzten Datensystemen und fehlten Erkenntnisse zur Verbesserung der Patientenversorgung.'],
+		]
+	],
+	[
+		'KEY' => 'projects3-solution',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'We built a HIPAA-compliant analytics platform that unified patient data from multiple sources with customizable dashboards.'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Изградихме аналитична платформа, съответстваща на HIPAA, която обединява данни за пациенти от множество източници с персонализируеми табла.'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Wir haben eine HIPAA-konforme Analyseplattform aufgebaut, die Patientendaten aus mehreren Quellen mit anpassbaren Dashboards vereint.'],
+		]
+	],
+	[
+		'KEY' => 'projects3-result',
+		'TRANSLATIONS' => [
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Enabled data-driven decisions that reduced average hospital stay duration by 1.5 days and improved resource allocation.'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Позволихме решения, основани на данни, които намалиха средната продължителност на болничния престой с 1,5 дни и подобриха разпределението на ресурсите.'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Ermöglichte datengesteuerte Entscheidungen, die die durchschnittliche Krankenhausaufenthaltsdauer um 1,5 Tage verkürzten und die Ressourcenzuweisung verbesserten.'],
 		]
 	],
 

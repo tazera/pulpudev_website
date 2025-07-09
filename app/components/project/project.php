@@ -5,48 +5,20 @@
  * 
  * Combines card-based layout with carousel functionality and modal details view.
  * 
- * @version 2.0
+ * @version 2.1
  * @author PulpuDev
  */
 
-// Get project data from component_functions.php if it was passed
+// Connect to the database
+$db = new SQLite3("{$_SERVER['DOCUMENT_ROOT']}/db.sqlite", SQLITE3_OPEN_CREATE | SQLITE3_OPEN_READWRITE);
+$db->enableExceptions(true);
+
+// Get project data - use custom projects if provided, otherwise get from database
 $display_projects = isset($customProjects) && is_array($customProjects) && !empty($customProjects)
     ? $customProjects
-    : [
-        [
-            'image' => '/images/projects/plamen1.webp',
-            'tags' => ['Desktop App', 'SaaS'],
-            'title' =>  $_SESSION['phrases']['projects1-h2'],
-            'description' => 'A comprehensive task management platform for enterprise teams with real-time collaboration features.',
-            'challenge' => 'The client needed to unify their task management across 12 departments with varying workflows and compliance requirements.',
-            'solution' => 'We developed a flexible system with customizable workflows, role-based permissions, and detailed audit logs for compliance tracking.',
-            'result' => 'Reduced task handoff time by 42% and improved cross-department visibility by implementing shared dashboards.',
-            'metrics' => ['42% faster handoffs', '87% user adoption'],
-            'media' => ['/images/projects/project1.webp', '/images/projects/project1.webp']
-        ],
-        [
-            'image' => '/images/projects/laki.webp',
-            'tags' => ['WebSite', 'E-commerce', 'Web App'],
-            'title' => 'Retail Mobile Shopping Experience',
-            'description' => 'A sleek mobile application for a retail chain enabling personalized shopping experiences.',
-            'challenge' => 'The retail chain was losing market share to competitors with better digital presence and needed a mobile-first approach.',
-            'solution' => 'We created a native mobile app with AR product previews, personalized recommendations, and seamless checkout process.',
-            'result' => 'The application achieved 230,000 downloads in the first quarter and increased mobile conversions by 28%.',
-            'metrics' => ['230K downloads', '28% higher conversion'],
-            'media' => ['/images/projects/project1.webp', '/images/projects/project1.webp']
-        ],
-        [
-            'image' => '/images/projects/project1.webp',
-            'tags' => ['Data Analytics', 'Dashboard'],
-            'title' => 'Healthcare Analytics Platform',
-            'description' => 'Data visualization and analytics dashboard for healthcare providers tracking patient outcomes.',
-            'challenge' => 'Healthcare providers struggled with disconnected data systems and lacked insights for improving patient care.',
-            'solution' => 'We built a HIPAA-compliant analytics platform that unified patient data from multiple sources with customizable dashboards.',
-            'result' => 'Enabled data-driven decisions that reduced average hospital stay duration by 1.5 days and improved resource allocation.',
-            'metrics' => ['1.5 days shorter stays', '$2.4M annual savings'],
-            'media' => ['/images/projects/project1.webp', '/images/projects/project1.webp']
-        ]
-    ];
+    : get_projects($db);
+
+$db->close();
 
 // Filter featured projects for the carousel (you can customize this logic)
 $featured_projects = array_slice($display_projects, 0, min(3, count($display_projects)));

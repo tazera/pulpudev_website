@@ -135,3 +135,48 @@ function verify_csrf_token($token)
 
 	return false;
 }
+
+/**
+ * Get all project data from the database
+ * Handles translation of content based on current language
+ * 
+ * @param SQLite3 $db The database connection
+ * @return array Array of project data
+ */
+function get_projects($db) {
+    $query = "SELECT * FROM PROJECTS ORDER BY FEATURED DESC, ID ASC";
+    $results = $db->query($query);
+    
+    $projects = array();
+    while ($row = $results->fetchArray(SQLITE3_ASSOC)) {
+        // Get the translated content using the keys
+        $titleQuery = "SELECT VALUE FROM PHRASES WHERE KEY = '{$row['TITLE_KEY']}' AND LANGUAGE_ISO_CODE = '{$_SESSION['language']}'";
+        $descriptionQuery = "SELECT VALUE FROM PHRASES WHERE KEY = '{$row['DESCRIPTION_KEY']}' AND LANGUAGE_ISO_CODE = '{$_SESSION['language']}'";
+        $challengeQuery = "SELECT VALUE FROM PHRASES WHERE KEY = '{$row['CHALLENGE_KEY']}' AND LANGUAGE_ISO_CODE = '{$_SESSION['language']}'";
+        $solutionQuery = "SELECT VALUE FROM PHRASES WHERE KEY = '{$row['SOLUTION_KEY']}' AND LANGUAGE_ISO_CODE = '{$_SESSION['language']}'";
+        $resultQuery = "SELECT VALUE FROM PHRASES WHERE KEY = '{$row['RESULT_KEY']}' AND LANGUAGE_ISO_CODE = '{$_SESSION['language']}'";
+        
+        $titleResult = $db->querySingle($titleQuery);
+        $descriptionResult = $db->querySingle($descriptionQuery);
+        $challengeResult = $db->querySingle($challengeQuery);
+        $solutionResult = $db->querySingle($solutionQuery);
+        $resultResult = $db->querySingle($resultQuery);
+        
+        // Build the project array with decoded JSON fields and translations
+        $project = [
+            'image' => $row['IMAGE'],
+            'tags' => json_decode($row['TAGS'], true),
+            'title' => $titleResult ?: $row['TITLE_KEY'], // Fallback if translation not found
+            'description' => $descriptionResult ?: $row['DESCRIPTION_KEY'],
+            'challenge' => $challengeResult ?: $row['CHALLENGE_KEY'],
+            'solution' => $solutionResult ?: $row['SOLUTION_KEY'],
+            'result' => $resultResult ?: $row['RESULT_KEY'],
+            'metrics' => json_decode($row['METRICS'], true),
+            'media' => json_decode($row['MEDIA'], true)
+        ];
+        
+        $projects[] = $project;
+    }
+    
+    return $projects;
+}
