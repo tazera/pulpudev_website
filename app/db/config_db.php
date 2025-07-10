@@ -58,7 +58,7 @@ $projects = [
 		'SOLUTION_KEY' => 'projects1-solution',
 		'RESULT_KEY' => 'projects1-result',
 		'METRICS' => json_encode(['42% faster handoffs', '87% user adoption']),
-		'MEDIA' => json_encode(['/images/projects/project1.webp', '/images/projects/project1.webp']),
+		'MEDIA' => json_encode(['/images/projects/plamen1.webp', '/images/projects/plamen1.webp', '/images/projects/plamen1.webp']),
 		'FEATURED' => 1
 	],
 	[
@@ -70,7 +70,7 @@ $projects = [
 		'SOLUTION_KEY' => 'projects2-solution',
 		'RESULT_KEY' => 'projects2-result',
 		'METRICS' => json_encode(['230K downloads', '28% higher conversion']),
-		'MEDIA' => json_encode(['/images/projects/project1.webp', '/images/projects/project1.webp']),
+		'MEDIA' => json_encode(['/images/projects/laki.webp', '/images/projects/laki.webp']),
 		'FEATURED' => 1
 	],
 	[
