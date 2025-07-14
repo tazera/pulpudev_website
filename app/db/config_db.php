@@ -57,20 +57,20 @@ $projects = [
 		'CHALLENGE_KEY' => 'projects1-challenge',
 		'SOLUTION_KEY' => 'projects1-solution',
 		'RESULT_KEY' => 'projects1-result',
-		'METRICS' => json_encode(['42% faster handoffs', '87% user adoption']),
+		'METRICS' => json_encode(['50% work optimization']),
 		'MEDIA' => json_encode(['/images/projects/plamen1.webp', '/images/projects/plamen1.webp', '/images/projects/plamen1.webp']),
 		'FEATURED' => 1
 	],
 	[
 		'IMAGE' => '/images/projects/laki.webp',
-		'TAGS' => json_encode(['WebSite', 'E-commerce', 'Web App']),
+		'TAGS' => json_encode(['WebSite', 'Corporate Website', 'Web App']),
 		'TITLE_KEY' => 'projects2-h2',
 		'DESCRIPTION_KEY' => 'projects2-description',
 		'CHALLENGE_KEY' => 'projects2-challenge',
 		'SOLUTION_KEY' => 'projects2-solution',
 		'RESULT_KEY' => 'projects2-result',
-		'METRICS' => json_encode(['230K downloads', '28% higher conversion']),
-		'MEDIA' => json_encode(['/images/projects/laki.webp', '/images/projects/laki.webp']),
+		'METRICS' => json_encode(['10k visits', '99% uptime']),
+		'MEDIA' => json_encode(['/images/projects/laki.webp', '/images/projects/laki-powdercoationg.webp']),
 		'FEATURED' => 1
 	],
 	[
@@ -346,9 +346,9 @@ $phrases = [
 	[
 		'KEY' => 'projects2-h2',
 		'TRANSLATIONS' => [
-			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Retail Mobile Shopping Experience'],
-			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Мобилно пазаруване за търговци на дребно'],
-			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Mobile Shopping-Erlebnis für den Einzelhandel'],
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Company Website'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Корпоративен уебсайт'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Unternehmenswebsite'],
 		]
 	],
 	[
