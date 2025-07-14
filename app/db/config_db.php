@@ -338,9 +338,9 @@ $phrases = [
 	[
 		'KEY' => 'projects1-h2',
 		'TRANSLATIONS' => [
-			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Enterprise Shop Management System'],
-			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Система за управление на корпоративен магазин'],
-			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Enterprise-Shop-Management-System'],
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Enterprise Chain Management System'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Система за управление на верига магазини'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Unternehmenskettenmanagementsystem'],
 		]
 	],
 	[
@@ -363,9 +363,9 @@ $phrases = [
 	[
 		'KEY' => 'projects1-description',
 		'TRANSLATIONS' => [
-			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'A comprehensive task management platform for enterprise teams with real-time collaboration features.'],
-			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Всеобхватна платформа за управление на задачи за корпоративни екипи с функции за сътрудничество в реално време.'],
-			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Eine umfassende Aufgabenverwaltungsplattform für Unternehmensteams mit Echtzeit-Zusammenarbeitsfunktionen.'],
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'A comprehensive platform for managing small, medium, and large enterprises with accounting and sales management features.'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Цялостна платформа за управление на малки, средни и големи предприятия с функции осчетоводство и управление на продажби.'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Eine umfassende Plattform für die Verwaltung von kleinen, mittleren und großen Unternehmen mit Buchhaltungs- und Verkaufsmanagementfunktionen.'],
 		]
 	],
 	[
@@ -396,9 +396,9 @@ $phrases = [
 	[
 		'KEY' => 'projects2-description',
 		'TRANSLATIONS' => [
-			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'A sleek mobile application for a retail chain enabling personalized shopping experiences.'],
-			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Елегантно мобилно приложение за търговска верига, позволяващо персонализирани преживявания при пазаруване.'],
-			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Eine elegante mobile Anwendung für eine Einzelhandelskette, die personalisierte Einkaufserlebnisse ermöglicht.'],
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'An elegant corporate website for a large client showcasing their services and portfolio.'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Елегантен уебсайт за голям корпоративен клиент, който демонстрира техните услуги и портфолио.'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Eine elegante Unternehmenswebsite für einen großen Kunden, die dessen Dienstleistungen und Portfolio präsentiert.'],
 		]
 	],
 	[
