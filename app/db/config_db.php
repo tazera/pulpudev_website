@@ -811,7 +811,7 @@ $phrases = [
 		'KEY' => 'footer-company',
 		'TRANSLATIONS' => [
 			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Pulpudev'],
-			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Палпудев'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Пулпудев'],
 			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Pulpudev'],
 		]
 	],
