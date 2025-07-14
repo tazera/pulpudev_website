@@ -73,18 +73,18 @@ $projects = [
 		'MEDIA' => json_encode(['/images/projects/laki.webp', '/images/projects/laki-powdercoationg.webp']),
 		'FEATURED' => 1
 	],
-	[
-		'IMAGE' => '/images/projects/project1.webp',
-		'TAGS' => json_encode(['Data Analytics', 'Dashboard']),
-		'TITLE_KEY' => 'projects3-h2',
-		'DESCRIPTION_KEY' => 'projects3-description',
-		'CHALLENGE_KEY' => 'projects3-challenge',
-		'SOLUTION_KEY' => 'projects3-solution',
-		'RESULT_KEY' => 'projects3-result',
-		'METRICS' => json_encode(['1.5 days shorter stays', '$2.4M annual savings']),
-		'MEDIA' => json_encode(['/images/projects/project1.webp', '/images/projects/project1.webp']),
-		'FEATURED' => 1
-	]
+	// [
+	// 	'IMAGE' => '/images/projects/project1.webp',
+	// 	'TAGS' => json_encode(['Data Analytics', 'Dashboard']),
+	// 	'TITLE_KEY' => 'projects3-h2',
+	// 	'DESCRIPTION_KEY' => 'projects3-description',
+	// 	'CHALLENGE_KEY' => 'projects3-challenge',
+	// 	'SOLUTION_KEY' => 'projects3-solution',
+	// 	'RESULT_KEY' => 'projects3-result',
+	// 	'METRICS' => json_encode(['1.5 days shorter stays', '$2.4M annual savings']),
+	// 	'MEDIA' => json_encode(['/images/projects/project1.webp', '/images/projects/project1.webp']),
+	// 	'FEATURED' => 1
+	// ]
 ];
 
 $phrases = [
