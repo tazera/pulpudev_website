@@ -810,9 +810,9 @@ $phrases = [
 	[
 		'KEY' => 'footer-company',
 		'TRANSLATIONS' => [
-			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'Pulpudev'],
-			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'Пулпудев'],
-			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'Pulpudev'],
+			['LANGUAGE_ISO_CODE' => 'EN', 'VALUE' => 'PulpuDEV'],
+			['LANGUAGE_ISO_CODE' => 'BG', 'VALUE' => 'ПулпуДЕВ'],
+			['LANGUAGE_ISO_CODE' => 'DE', 'VALUE' => 'PulpuDEV'],
 		]
 	],
 	[
