@@ -302,7 +302,7 @@
             border-radius: 12px;
             margin-left: 2.5rem;
             background: #232323;
-            padding: 18px;
+            padding: 0px;
         }
     </style>
 </head>
@@ -327,7 +327,7 @@
                             </h3>
                             <p class="mb-0 top-card-text"><?php echo $_SESSION['phrases']['services-box-text1'] ?></p>
                         </div>
-                        <img src="/images/img1.webp" alt="Specs" width="400" height="220" class="card-img-right d-none d-md-block" />
+                        <img src="/images/img1.webp" alt="Specs" class="card-img-right d-none d-md-block" />
                     </div>
                 </div>
                 <div class="col-12 col-lg-6 d-flex">
@@ -336,7 +336,7 @@
                             <h3 class="top-card-title mb-3"><?php echo $_SESSION['phrases']['services-box-title2'] ?></h3>
                             <p class="mb-0 top-card-text"><?php echo $_SESSION['phrases']['services-box-text2'] ?></p>
                         </div>
-                        <img src="/images/img2.webp" alt="Updates" width="400" height="220" class="card-img-right d-none d-md-block" />
+                        <img src="/images/img2.webp" alt="Updates" class="card-img-right d-none d-md-block" />
                     </div>
                 </div>
             </div>
