@@ -292,6 +292,18 @@
                 /* Maintains the same aspect ratio */
             }
         }
+
+        /* Updated card-img-right CSS */
+        .card-img-right {
+            width: 260px;
+            height: 260px;
+            object-fit: cover;
+            /* Changed from contain to cover to fill the square */
+            border-radius: 12px;
+            margin-left: 2.5rem;
+            background: #232323;
+            padding: 18px;
+        }
     </style>
 </head>
 
